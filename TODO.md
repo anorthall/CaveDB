@@ -15,6 +15,7 @@ A rough list of tasks to complete for the project.
 - [ ] Create model for a System
 - [ ] Create model for a District
 - [ ] Create model for a Trip
+- [ ] Create model for a Club
 
 
 
