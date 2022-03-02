@@ -1,2 +1,5 @@
-# CaveLog
-A Django application to log caving trips and display them online. Currently in very early development.
+# CaveDB
+A Django application to display a database of caves in the UK, and later internationally.
+
+The application is also envisioned to allow logging of caving trips, with a public profile for each user
+displaying their most recent trips.

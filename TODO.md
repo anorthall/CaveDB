@@ -1,11 +1,13 @@
-# CaveLog To-do List
+# CaveDB To-do List
 A rough list of tasks to complete for the project.
+
 
 
 ## Project initialisation
 - [ ] Set up pre-commit hooks for Black and flake8
 - [ ] Initial cleanup of Django files using the above
 - [ ] Set up Docker development environment
+
 
 
 ## Models
@@ -15,46 +17,82 @@ A rough list of tasks to complete for the project.
 - [ ] Create model for a Trip
 
 
+
 ### Cave Model
 #### Fields
-- [ ] ID
-- [ ] Name
-- [ ] District (ForeignKey)
-- [ ] System (ForeignKey)
-- [ ] Location
-- [ ] Lat/long
-- [ ] Length
-- [ ] Wikipedia link
-- [ ] Caving body link
-- [ ] Description
+- [ ] ID (CharField) (Unique)
+- [ ] Name (CharField) (Unique)
+- [ ] Added on (DateTimeField)
+- [ ] Last updated (DateTimeField)
+- [ ] District (ForeignKey) 
+- [ ] System (ForeignKey) (Can be blank)
+- [ ] Location (CharField)
+- [ ] Lat/long (CharField) (Can be blank)
+- [ ] Length in metres (IntegerField) (Can be blank)
+- [ ] Wikipedia link (CharField) (Can be blank)
+- [ ] Caving body link (CharField) (Can be blank)
+- [ ] Description (TextField) (Can be blank)
+
+
 
 ### System Model
 #### Fields
-- [ ] ID
-- [ ] Name
+- [ ] ID (CharField) (Unique)
+- [ ] Name (CharField) (Unique)
 - [ ] District (ForeignKey)
-- [ ] Location
-- [ ] Lat/long
-- [ ] Length
-- [ ] Wikipedia link
-- [ ] Caving body link
-- [ ] Description
+- [ ] Location (CharField)
+- [ ] Lat/long (CharField) (Can be blank)
+- [ ] Length in metres (IntegerField) (Can be blank)
+- [ ] Wikipedia link (CharField) (Can be blank)
+- [ ] Caving body link (CharField) (Can be blank)
+- [ ] Description (TextField) (Can be blank)
 
 #### Methods
 - [ ] Caves in system
 
 
+
 ### District
 #### Fields
-- [ ] ID
-- [ ] Name
-- [ ] Country
-- [ ] Location
-- [ ] Description
+- [ ] ID (CharField) (Unique)
+- [ ] Name (CharField) (Unique)
+- [ ] Country (CharField)
+- [ ] Description (CharField)
+
+
+
+### Club
+#### Fields
+- [ ] ID (CharField) (Unique)
+- [ ] Name (CharField) (Unique)
+- [ ] Website (CharField)
+- [ ] District (ForeignKey)
+- [ ] Hut location (CharField)
+- [ ] Description (TextField)
+
 
 
 ### Trip
 #### Fields
-- [ ] ID
+- [ ] ID (CharField) (Unique)
 - [ ] Cave (ForeignKey)
-- To be continued...
+- [ ] Type of trip (CharField)
+    - Sporting
+    - Digging
+    - Survey
+    - Bolting
+    - Conservation
+    - Diving
+    - Other
+
+- [ ] Trip start (DateTimeField)
+- [ ] Trip end (DateTimeField)
+- [ ] Club (ForeignKey) (Can be blank)
+- [ ] Cavers (TextField) (Can be blank)
+- [ ] Route (TextField) (Can be blank)
+- [ ] Distance covered in metres (IntegerField) (Can be blank)
+- [ ] Vertical distance covered in metres (IntegerField) (Can be blank)
+- [ ] Trip notes (TextField) (Can be blank)
+
+#### Methods
+- [ ] Trip duration in minutes
