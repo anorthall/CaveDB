@@ -1,14 +1,10 @@
 # CaveDB To-do List
 A rough list of tasks to complete for the project.
 
-
-
 ## Project initialisation
 - [ ] Set up pre-commit hooks for Black and flake8
 - [ ] Initial cleanup of Django files using the above
 - [ ] Set up Docker development environment
-
-
 
 ## Models
 - [ ] Create model for a Cave
@@ -16,7 +12,6 @@ A rough list of tasks to complete for the project.
 - [ ] Create model for a District
 - [ ] Create model for a Trip
 - [ ] Create model for a Club
-
 
 
 ### Cave Model
@@ -35,7 +30,6 @@ A rough list of tasks to complete for the project.
 - [ ] Description (TextField) (Can be blank)
 
 
-
 ### System Model
 #### Fields
 - [ ] ID (CharField) (Unique)
@@ -52,14 +46,12 @@ A rough list of tasks to complete for the project.
 - [ ] Caves in system
 
 
-
 ### District
 #### Fields
 - [ ] ID (CharField) (Unique)
 - [ ] Name (CharField) (Unique)
 - [ ] Country (CharField)
 - [ ] Description (CharField)
-
 
 
 ### Club
@@ -70,7 +62,6 @@ A rough list of tasks to complete for the project.
 - [ ] District (ForeignKey)
 - [ ] Hut location (CharField)
 - [ ] Description (TextField)
-
 
 
 ### Trip
