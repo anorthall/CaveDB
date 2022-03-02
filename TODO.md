@@ -2,8 +2,8 @@
 A rough list of tasks to complete for the project.
 
 ## Project initialisation
-- [ ] Set up pre-commit hooks for Black and flake8
-- [ ] Initial cleanup of Django files using the above
+- [X] Set up pre-commit hooks for Black and flake8
+- [X] Initial cleanup of Django files using the above
 - [ ] Set up Docker development environment
 
 ## Models
