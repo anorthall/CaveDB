@@ -20,7 +20,7 @@ A rough list of tasks to complete for the project.
 - [ ] Name (CharField) (Unique)
 - [ ] Added on (DateTimeField)
 - [ ] Last updated (DateTimeField)
-- [ ] District (ForeignKey) 
+- [ ] District (ForeignKey)
 - [ ] System (ForeignKey) (Can be blank)
 - [ ] Location (CharField)
 - [ ] Lat/long (CharField) (Can be blank)
