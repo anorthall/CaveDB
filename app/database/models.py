@@ -57,6 +57,8 @@ class Club(models.Model):
     district = models.ForeignKey(
         "District",
         on_delete=models.PROTECT,
+        null=True,
+        blank=True,
     )
     location = models.CharField(max_length=50)
     website = models.URLField(blank=True, null=True)
