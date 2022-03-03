@@ -5,13 +5,16 @@ class Country(models.Model):
     class Meta:
         verbose_name_plural = "Countries"
 
-    id = models.CharField(max_length=2, primary_key=True, name="ID")
     name = models.CharField(max_length=30, unique=True)
+    code = models.CharField(max_length=3, unique=True)
+
+    def __str__(self):
+        return self.name
 
 
 class District(models.Model):
-    id = models.CharField(max_length=3, primary_key=True, name="ID")
     name = models.CharField(max_length=30)
+    code = models.CharField(max_length=3, unique=True)
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
@@ -19,6 +22,9 @@ class District(models.Model):
     website = models.URLField(blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
     description = models.TextField()
+
+    def __str__(self):
+        return "{} ({})".format(self.name, self.country)
 
 
 class CavingBody(models.Model):
@@ -37,6 +43,9 @@ class CavingBody(models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Club(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -54,10 +63,13 @@ class Club(models.Model):
     website = models.URLField(blank=True, null=True)
     description = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class System(models.Model):
-    id = models.IntegerField(primary_key=True, name="ID")
     name = models.CharField(max_length=50)
+    code = models.IntegerField(unique=True, name="Code")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     district = models.ForeignKey(
@@ -83,10 +95,13 @@ class System(models.Model):
     website = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Cave(models.Model):
-    id = models.IntegerField(primary_key=True, name="ID")
     name = models.CharField(max_length=50)
+    code = models.IntegerField(unique=True, name="Code")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     district = models.ForeignKey(
@@ -117,3 +132,6 @@ class Cave(models.Model):
     )
     website = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
