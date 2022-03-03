@@ -7,61 +7,88 @@ A rough list of tasks to complete for the project.
 - [ ] Set up Docker development environment
 
 ## Models
-- [ ] Create model for a Cave
-- [ ] Create model for a System
-- [ ] Create model for a District
+- [X] Create model for a Cave
+- [X] Create model for a System
+- [X] Create model for a District
 - [ ] Create model for a Trip
-- [ ] Create model for a Club
+- [X] Create model for a Club
+- [X] Create model for a Caving Body
+- [X] Create model for a Country
 
 
 ### Cave Model
 #### Fields
-- [ ] ID (CharField) (Unique)
-- [ ] Name (CharField) (Unique)
-- [ ] Added on (DateTimeField)
-- [ ] Last updated (DateTimeField)
-- [ ] District (ForeignKey)
-- [ ] System (ForeignKey) (Can be blank)
-- [ ] Location (CharField)
-- [ ] Lat/long (CharField) (Can be blank)
-- [ ] Length in metres (IntegerField) (Can be blank)
-- [ ] Wikipedia link (CharField) (Can be blank)
-- [ ] Caving body link (CharField) (Can be blank)
-- [ ] Description (TextField) (Can be blank)
+- [X] ID (IntegerField) (Unique) (PK)
+- [X] Name (CharField) (Unique)
+- [X] Added on (DateTimeField)
+- [X] Last updated (DateTimeField)
+- [X] District (ForeignKey)
+- [X] System (ForeignKey) (Can be blank)
+- [X] Location (CharField)
+- [X] Latitude (DecimalField) (Can be blank)
+- [X] Longitude (DecimalField) (Can be blank)
+- [X] Length in metres (IntegerField) (Can be blank)
+- [X] Depth in metres (IntegerField) (Can be blank)
+- [X] Wikipedia link (CharField) (Can be blank)
+- [X] Caving body (ForeignKey) (Can be blank)
+- [X] Website (URLField) (Can be blank)
+- [X] Description (TextField) (Can be blank)
 
 
 ### System Model
 #### Fields
-- [ ] ID (CharField) (Unique)
-- [ ] Name (CharField) (Unique)
-- [ ] District (ForeignKey)
-- [ ] Location (CharField)
-- [ ] Lat/long (CharField) (Can be blank)
-- [ ] Length in metres (IntegerField) (Can be blank)
-- [ ] Wikipedia link (CharField) (Can be blank)
-- [ ] Caving body link (CharField) (Can be blank)
-- [ ] Description (TextField) (Can be blank)
+- [X] ID (IntegerField) (Unique) (PK)
+- [X] Name (CharField) (Unique)
+- [X] Added on (DateTimeField)
+- [X] Last updated (DateTimeField)
+- [X] District (ForeignKey)
+- [X] Location (CharField)
+- [X] Latitude (DecimalField) (Can be blank)
+- [X] Longitude (DecimalField) (Can be blank)
+- [X] Length in metres (IntegerField) (Can be blank)
+- [X] Depth in metres (IntegerField) (Can be blank)
+- [X] Wikipedia link (CharField) (Can be blank)
+- [X] Caving body (ForeignKey) (Can be blank)
+- [X] Website (URLField) (Can be blank)
+- [X] Description (TextField) (Can be blank)
 
 #### Methods
 - [ ] Caves in system
 
 
+### Caving Body
+#### Fields
+- [X] Name (CharField) (Unique)
+- [X] Country (ForeignKey)
+- [X] District (ForeignKey) (Can be blank)
+
+
 ### District
 #### Fields
-- [ ] ID (CharField) (Unique)
-- [ ] Name (CharField) (Unique)
-- [ ] Country (CharField)
-- [ ] Description (CharField)
+- [X] ID (CharField) (Unique) (PK)
+- [X] Name (CharField) (Unique)
+- [X] Country (ForeignKey)
+- [ ] Caving Body (ForeignKey) (Can be blank)
+- [X] Website (URLField) (Can be blank)
+- [X] Wikipedia (URLField) (Can be blank)
+- [X] Description (CharField)
+
+
+### Country
+#### Fields
+ - [X] ID (CharField) (Unique)
+ - [X] Name (CharField) (Unique)
+ - [ ] Caving Body (ForeignKey) (Can be blank)
 
 
 ### Club
 #### Fields
-- [ ] ID (CharField) (Unique)
-- [ ] Name (CharField) (Unique)
-- [ ] Website (CharField)
-- [ ] District (ForeignKey)
-- [ ] Hut location (CharField)
-- [ ] Description (TextField)
+- [X] Name (CharField) (Unique)
+- [X] District (ForeignKey)
+- [X] Caving Body (ForeignKey) (Can be blank)
+- [X] Location (CharField)
+- [X] Website (CharField)
+- [X] Description (TextField)
 
 
 ### Trip
