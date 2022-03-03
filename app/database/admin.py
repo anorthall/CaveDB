@@ -23,6 +23,10 @@ class CavingBodyAdmin(admin.ModelAdmin):
         "country",
         "website",
     )
+    list_filter = (
+        "country",
+        "district",
+    )
 
 
 @admin.register(Club)
@@ -31,7 +35,10 @@ class ClubAdmin(admin.ModelAdmin):
         "name",
         "location",
         "district",
-        "caving_body",
+    )
+    list_filter = (
+        "country",
+        "district",
     )
 
 

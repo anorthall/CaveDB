@@ -50,15 +50,13 @@ class CavingBody(models.Model):
 
 class Club(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    country = models.ForeignKey(
+        "Country",
+        on_delete=models.PROTECT,
+    )
     district = models.ForeignKey(
         "District",
         on_delete=models.PROTECT,
-    )
-    caving_body = models.ForeignKey(
-        "CavingBody",
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True,
     )
     location = models.CharField(max_length=50)
     website = models.URLField(blank=True, null=True)
