@@ -2,12 +2,15 @@ from django.db import models
 
 
 class Country(models.Model):
-    id = models.CharField(max_length=2, primary_key=True)
+    class Meta:
+        verbose_name_plural = "Countries"
+
+    id = models.CharField(max_length=2, primary_key=True, name="ID")
     name = models.CharField(max_length=30, unique=True)
 
 
 class District(models.Model):
-    id = models.CharField(max_length=3, primary_key=True)
+    id = models.CharField(max_length=3, primary_key=True, name="ID")
     name = models.CharField(max_length=30)
     country = models.ForeignKey(
         "Country",
@@ -19,6 +22,9 @@ class District(models.Model):
 
 
 class CavingBody(models.Model):
+    class Meta:
+        verbose_name_plural = "Caving bodies"
+
     name = models.CharField(max_length=50, unique=True)
     country = models.ForeignKey(
         "Country",
@@ -50,7 +56,7 @@ class Club(models.Model):
 
 
 class System(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, name="ID")
     name = models.CharField(max_length=50)
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
@@ -79,7 +85,7 @@ class System(models.Model):
 
 
 class Cave(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.IntegerField(primary_key=True, name="ID")
     name = models.CharField(max_length=50)
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
