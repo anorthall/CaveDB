@@ -42,6 +42,7 @@ class CavingBody(models.Model):
         null=True,
         blank=True,
     )
+    website = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name
