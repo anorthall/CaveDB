@@ -3,10 +3,10 @@ from django.db import models
 
 class Country(models.Model):
     class Meta:
-        verbose_name_plural = "Countries"
+        verbose_name_plural = "countries"
 
     name = models.CharField(max_length=30, unique=True)
-    code = models.CharField(max_length=3, unique=True)
+    code = models.CharField(max_length=3, unique=True, verbose_name="country code")
 
     def __str__(self):
         return self.name
@@ -14,7 +14,7 @@ class Country(models.Model):
 
 class District(models.Model):
     name = models.CharField(max_length=30)
-    code = models.CharField(max_length=3, unique=True)
+    code = models.CharField(max_length=3, verbose_name="district code")
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
@@ -29,7 +29,7 @@ class District(models.Model):
 
 class CavingBody(models.Model):
     class Meta:
-        verbose_name_plural = "Caving bodies"
+        verbose_name_plural = "caving bodies"
 
     name = models.CharField(max_length=50, unique=True)
     country = models.ForeignKey(
@@ -70,7 +70,7 @@ class Club(models.Model):
 
 class System(models.Model):
     name = models.CharField(max_length=50)
-    code = models.IntegerField(unique=True, name="Code")
+    code = models.IntegerField(unique=True, verbose_name="system code")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     district = models.ForeignKey(
@@ -84,8 +84,8 @@ class System(models.Model):
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, blank=True, null=True
     )
-    length = models.IntegerField(verbose_name="Length in metres", blank=True, null=True)
-    depth = models.IntegerField(verbose_name="Depth in metres", blank=True, null=True)
+    length = models.IntegerField(verbose_name="length in metres", blank=True, null=True)
+    depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
     caving_body = models.ForeignKey(
         "CavingBody",
@@ -102,7 +102,7 @@ class System(models.Model):
 
 class Cave(models.Model):
     name = models.CharField(max_length=50)
-    code = models.IntegerField(unique=True, name="Code")
+    code = models.IntegerField(unique=True, verbose_name="cave code")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     district = models.ForeignKey(
@@ -122,8 +122,8 @@ class Cave(models.Model):
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, blank=True, null=True
     )
-    length = models.IntegerField(verbose_name="Length in metres", blank=True, null=True)
-    depth = models.IntegerField(verbose_name="Depth in metres", blank=True, null=True)
+    length = models.IntegerField(verbose_name="length in metres", blank=True, null=True)
+    depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
     caving_body = models.ForeignKey(
         "CavingBody",
