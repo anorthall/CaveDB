@@ -1,6 +1,27 @@
 version: "3.9"
 services:
-  web:
+  www:
     build: .
     ports:
       - "8000:8000"
+    depends_on:
+      - db
+    links:
+      - "db:db"
+    env_file:
+      - ./docker/env.dev
+  db:
+    image: postgres:14.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=cavedb
+      - POSTGRES_PASSWORD=cavedb
+      - POSTGRES_DB=cavedb
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
+    driver: local

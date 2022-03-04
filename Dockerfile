@@ -3,7 +3,9 @@
 FROM python:3.9-buster
 
 # Install nginx and vim, and copy nginx configuration
-RUN apt-get update && apt-get install nginx vim -y --no-install-recommends
+RUN apt-get update && apt-get install nginx \
+    libpq-dev python3-dev \
+    -y --no-install-recommends
 COPY docker/nginx.default /etc/nginx/sites-available/default
 
 # Log nginx to stdout
