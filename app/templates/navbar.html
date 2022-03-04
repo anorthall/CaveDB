@@ -9,9 +9,19 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav me-auto">
 
-          {% url 'index' as current_page %}
+          {% url 'db-caves' as current_page %}
           <li class="nav-item">
-            <a class="nav-link{% if request.get_full_path == current_page %} active{% endif %}" aria-current="page" href="{% url 'index' %}">Home</a>
+            <a class="nav-link{% if request.get_full_path == current_page %} active{% endif %}" aria-current="page" href="{% url 'db-caves' %}">Caves</a>
+          </li>
+
+          {% url 'db-systems' as current_page %}
+          <li class="nav-item">
+            <a class="nav-link{% if request.get_full_path == current_page %} active{% endif %}" aria-current="page" href="{% url 'db-systems' %}">Systems</a>
+          </li>
+
+          {% url 'db-clubs' as current_page %}
+          <li class="nav-item">
+            <a class="nav-link{% if request.get_full_path == current_page %} active{% endif %}" aria-current="page" href="{% url 'db-clubs' %}">Clubs</a>
           </li>
 
         </ul>
