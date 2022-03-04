@@ -21,7 +21,7 @@ COPY app /opt/app/cavedb/
 
 # Setup application environment
 WORKDIR /opt/app
-RUN pip install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt
 RUN chown -R www-data:www-data /opt/app
 
 # Run application
