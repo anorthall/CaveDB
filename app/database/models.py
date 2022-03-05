@@ -6,6 +6,7 @@ class Country(models.Model):
         verbose_name_plural = "countries"
 
     name = models.CharField(max_length=30, unique=True)
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.name
@@ -13,6 +14,7 @@ class Country(models.Model):
 
 class Region(models.Model):
     name = models.CharField(max_length=30)
+    slug = models.SlugField(unique=True)
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
@@ -28,6 +30,7 @@ class Region(models.Model):
 class Organisation(models.Model):
     name = models.CharField(max_length=50, unique=True)
     abbreviation = models.CharField(max_length=10)
+    slug = models.SlugField(unique=True)
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
@@ -47,6 +50,7 @@ class Organisation(models.Model):
 class Club(models.Model):
     name = models.CharField(max_length=50, unique=True)
     abbreviation = models.CharField(max_length=10)
+    slug = models.SlugField(unique=True)
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
@@ -67,6 +71,7 @@ class Club(models.Model):
 
 class CaveSystem(models.Model):
     name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True)
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     region = models.ForeignKey(
@@ -107,6 +112,7 @@ class CaveSystem(models.Model):
 
 class Cave(models.Model):
     name = models.CharField(max_length=50)
+    slug = models.SlugField(unique=True)
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     region = models.ForeignKey(
