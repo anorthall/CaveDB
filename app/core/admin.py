@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+# Set global admin site headers
+admin.site.site_header = "CaveDB"
+admin.site.site_title = "CaveDB"
+admin.site.index_title = "Administration"

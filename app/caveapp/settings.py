@@ -31,6 +31,7 @@ CSRF_TRUSTED_ORIGINS = os.environ.get("DJANGO_TRUSTED_ORIGINS").split(" ")
 
 INSTALLED_APPS = [
     "database.apps.DatabaseConfig",
+    "core.apps.CoreConfig",
     "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
