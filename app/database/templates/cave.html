@@ -126,12 +126,12 @@
 
     <tr>
       <th scope="row">Added to database</th>
-      <td>{{ cave.added_on }}</td>
+      <td>{{ cave.added_on | date:"l, jS F Y, H:i e" }}</td>
     </tr>
 
     <tr>
       <th scope="row">Last updated</th>
-      <td>{{ cave.updated_on }}</td>
+      <td>{{ cave.updated_on | date:"l, jS F Y, H:i e" }}</td>
     </tr>
   </tbody>
 </table>

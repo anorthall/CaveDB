@@ -126,12 +126,12 @@
 
     <tr>
       <th scope="row">Added to database</th>
-      <td>{{ system.added_on }}</td>
+      <td>{{ system.added_on | date:"l, jS F Y, H:i e" }}</td>
     </tr>
 
     <tr>
       <th scope="row">Last updated</th>
-      <td>{{ system.updated_on }}</td>
+      <td>{{ system.updated_on | date:"l, jS F Y, H:i e" }}</td>
     </tr>
 
     {% if system.number_of_caves > 0 %}
