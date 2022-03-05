@@ -10,6 +10,8 @@ services:
       - "db:db"
     env_file:
       - ./docker/env.dev
+    volumes:
+      - ./app/:/opt/app/cavedb/
   db:
     image: postgres:14.2-alpine
     restart: always

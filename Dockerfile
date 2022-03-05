@@ -15,11 +15,10 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 # Create application folders
 RUN mkdir -p /opt/app
 RUN mkdir -p /opt/app/pip_cache
-RUN mkdir -p /opt/app/cavedb
+RUN mkdir -p /opt/app/static
 
-# Copy application
+# Copy requirements and scripts
 COPY requirements.txt docker/start-server.sh /opt/app/
-COPY app /opt/app/cavedb/
 
 # Setup application environment
 WORKDIR /opt/app
