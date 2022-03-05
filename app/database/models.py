@@ -84,8 +84,8 @@ class CaveSystem(models.Model):
         verbose_name="length in kilometres",
         blank=True,
         null=True,
-        decimal_places=2,
-        max_digits=8,
+        decimal_places=3,
+        max_digits=6,
     )
     depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
@@ -130,8 +130,8 @@ class Cave(models.Model):
         verbose_name="length in kilometres",
         blank=True,
         null=True,
-        decimal_places=2,
-        max_digits=8,
+        decimal_places=3,
+        max_digits=6,
     )
     depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
