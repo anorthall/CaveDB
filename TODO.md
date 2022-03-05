@@ -6,92 +6,31 @@ A rough list of tasks to complete for the project.
 - [X] Initial cleanup of Django files using the above
 - [X] Set up Docker development environment
 - [X] Create Docker development environment that responds actively to code changes
+- [ ] Export test database and allow easy reload of test data
+- [ ] Create Docker production environment
 - [ ] Create basic unit tests
 - [ ] Set up test workflows on GitHub
+
+## Feature implementations
+- [ ] Create a list of Countries and their Regions
+- [ ] Create a sortable list view that shows Caves and Systems within Regions
+- [ ] Create a list view for Clubs
+- [ ] Create a homepage with an introduction and recent updates
+- [ ] Create a method to report errors, or suggest corrections/new caves
+- [ ] Add notes on data sourcing and use
+- [ ] Implement trip logging
+- [ ] Add a section for surveys on Caves and Systems
+- [ ] Add photos to Cave/System pages
+- [ ] Add Google Maps links to Lat/long
 
 ## Models
 - [X] Create model for a Cave
 - [X] Create model for a System
-- [X] Create model for a District
+- [X] Create model for a Region
 - [ ] Create model for a Trip
 - [X] Create model for a Club
 - [X] Create model for a Caving Body
 - [X] Create model for a Country
-
-
-### Cave Model
-#### Fields
-- [X] ID (IntegerField) (Unique) (PK)
-- [X] Name (CharField) (Unique)
-- [X] Added on (DateTimeField)
-- [X] Last updated (DateTimeField)
-- [X] District (ForeignKey)
-- [X] System (ForeignKey) (Can be blank)
-- [X] Location (CharField)
-- [X] Latitude (DecimalField) (Can be blank)
-- [X] Longitude (DecimalField) (Can be blank)
-- [X] Length in metres (IntegerField) (Can be blank)
-- [X] Depth in metres (IntegerField) (Can be blank)
-- [X] Wikipedia link (CharField) (Can be blank)
-- [X] Caving body (ForeignKey) (Can be blank)
-- [X] Website (URLField) (Can be blank)
-- [X] Description (TextField) (Can be blank)
-
-
-### System Model
-#### Fields
-- [X] ID (IntegerField) (Unique) (PK)
-- [X] Name (CharField) (Unique)
-- [X] Added on (DateTimeField)
-- [X] Last updated (DateTimeField)
-- [X] District (ForeignKey)
-- [X] Location (CharField)
-- [X] Latitude (DecimalField) (Can be blank)
-- [X] Longitude (DecimalField) (Can be blank)
-- [X] Length in metres (IntegerField) (Can be blank)
-- [X] Depth in metres (IntegerField) (Can be blank)
-- [X] Wikipedia link (CharField) (Can be blank)
-- [X] Caving body (ForeignKey) (Can be blank)
-- [X] Website (URLField) (Can be blank)
-- [X] Description (TextField) (Can be blank)
-
-#### Methods
-- [ ] Caves in system
-
-
-### Caving Body
-#### Fields
-- [X] Name (CharField) (Unique)
-- [X] Country (ForeignKey)
-- [X] District (ForeignKey) (Can be blank)
-
-
-### District
-#### Fields
-- [X] ID (CharField) (Unique) (PK)
-- [X] Name (CharField) (Unique)
-- [X] Country (ForeignKey)
-- [ ] Caving Body (ForeignKey) (Can be blank)
-- [X] Website (URLField) (Can be blank)
-- [X] Wikipedia (URLField) (Can be blank)
-- [X] Description (CharField)
-
-
-### Country
-#### Fields
- - [X] ID (CharField) (Unique)
- - [X] Name (CharField) (Unique)
-
-
-### Club
-#### Fields
-- [X] Name (CharField) (Unique)
-- [X] District (ForeignKey)
-- [X] Caving Body (ForeignKey) (Can be blank)
-- [X] Location (CharField)
-- [X] Website (CharField)
-- [X] Description (TextField)
-
 
 ### Trip
 #### Fields
