@@ -6,7 +6,6 @@ class Country(models.Model):
         verbose_name_plural = "countries"
 
     name = models.CharField(max_length=30, unique=True)
-    code = models.CharField(max_length=3, unique=True, verbose_name="country code")
 
     def __str__(self):
         return self.name
@@ -97,7 +96,6 @@ class CaveSystem(models.Model):
 
 class Cave(models.Model):
     name = models.CharField(max_length=50)
-    code = models.IntegerField(unique=True, verbose_name="cave code")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     region = models.ForeignKey(

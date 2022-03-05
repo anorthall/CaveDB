@@ -5,14 +5,7 @@ from .models import Cave, CaveSystem, Region, Club, Organisation, Country
 
 admin.site.register(Cave)
 admin.site.register(CaveSystem)
-
-
-@admin.register(Country)
-class CountryAdmin(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "code",
-    )
+admin.site.register(Country)
 
 
 @admin.register(Organisation)
