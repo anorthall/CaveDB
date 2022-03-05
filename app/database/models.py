@@ -27,6 +27,7 @@ class Region(models.Model):
 
 class Organisation(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    abbreviation = models.CharField(max_length=10)
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
@@ -45,6 +46,7 @@ class Organisation(models.Model):
 
 class Club(models.Model):
     name = models.CharField(max_length=50, unique=True)
+    abbreviation = models.CharField(max_length=10)
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
