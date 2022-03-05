@@ -4,7 +4,9 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="db-index"),
-    path("caves/", views.caves, name="db-caves"),
-    path("systems/", views.systems, name="db-systems"),
-    path("clubs/", views.clubs, name="db-clubs"),
+    path("cave/<slug:slug>", views.cave, name="db-cave"),
+    path("caves/", views.caveindex, name="db-cave-index"),
+    path("system/<slug:slug>", views.system, name="db-system"),
+    path("systems/", views.systemindex, name="db-system-index"),
+    path("club/", views.club, name="db-club-index"),
 ]

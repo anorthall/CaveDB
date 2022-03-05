@@ -109,6 +109,9 @@ class CaveSystem(models.Model):
     def country(self):
         return self.region.country
 
+    def number_of_caves(self):
+        return len(self.cave_set.all())
+
 
 class Cave(models.Model):
     name = models.CharField(max_length=50)

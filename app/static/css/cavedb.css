@@ -2,6 +2,10 @@
   text-align: center
 }
 
-body{
+body {
   overflow-y:scroll;
+}
+
+tr.table-title, th.table-title {
+  background-color: rgba(0, 0, 0, 0.075);
 }

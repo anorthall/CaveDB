@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load markdown_extras %}
+{% block title %}{{ cave.name }} ({{ cave.location }}) - {{ cave.region }}{% endblock %}
+{% block description %}Details on the length and depth of {{ cave.name }} beneath {{ cave.location }} in {{ cave.region }}.{% endblock %}
+{% block content %}
+
+<h1 class="mb-0 display-4"><span class="text-muted">Cave:</span> {{ cave.name }}</h1>
+<span class="fw-light mt-0 text-muted">{{ cave.country }} &rarr; {{ cave.region.name }} &rarr; {{ cave.location }}</span>
+<br /><br />
+
+{% if cave.description %}
+{{ cave.description | markdown | safe }}<br />
+{% endif %}
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="2" scope="col" class="text-center table-title">{{ cave.name }} - Datasheet</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td>{{ cave.name }}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Cave system</th>
+      {% if cave.system %}
+      <td><a class="text-muted" href="{% url 'db-system' cave.system.slug %}">{{ cave.system.name }}</a></td>
+      {% else %}
+      <td>Not recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row" colspan="2" class="text-center table-title">Location</th>
+    </tr>
+
+    <tr>
+      <th scope="row">Country</th>
+      <td>{{ cave.country }}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Region</th>
+      <td>{{ cave.region.name }}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Location</th>
+      <td>{{ cave.location }}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Entrance coordinates</th>
+      {% if cave.latitude and cave.longitude %}
+      <td>{{ cave.latitude }}, {{ cave.longitude }}</td>
+      {% else %}
+      <td>Not recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row" colspan="2" class="text-center table-title">Length and Depth</th>
+    </tr>
+
+    <tr>
+      <th scope="row">Length</th>
+      {% if cave.length %}
+      <td>{{ cave.length }}km</td>
+      {% else %}
+      <td>Not recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row">Depth</th>
+      {% if cave.depth %}
+      <td>{{ cave.depth }}m</td>
+      {% else %}
+      <td>Not recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row" colspan="2" class="text-center table-title">External Resources</th>
+    </tr>
+
+    <tr>
+      <th scope="row">Organisation</th>
+      {% if cave.organisation %}
+      <td>
+        {{ cave.organisation }}
+        {% if cave.organisation.website %}
+        <a class="text-muted" href="{{ cave.organisation.website }}">(web)</a>
+        {% endif %}
+      </td>
+      {% else %}
+      <td>Not recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row">Cave website</th>
+      {% if cave.website %}
+      <td><a class="text-muted" href="{{ cave.website }}">{{ cave.website }}</a></td>
+      {% else %}
+      <td>Not recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row">Wikipedia link</th>
+      {% if cave.wikipedia %}
+      <td><a class="text-muted" href="{{ cave.wikipedia }}">{{ cave.wikipedia }}</a></td>
+      {% else %}
+      <td>Not recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
+      <th scope="row" colspan="2" class="text-center table-title">Database</th>
+    </tr>
+
+    <tr>
+      <th scope="row">Added to database</th>
+      <td>{{ cave.added_on }}</td>
+    </tr>
+
+    <tr>
+      <th scope="row">Last updated</th>
+      <td>{{ cave.updated_on }}</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}
