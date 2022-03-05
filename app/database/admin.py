@@ -1,17 +1,17 @@
 from csv import list_dialects
 from django.contrib import admin
 
-from .models import Cave, CaveSystem, Region, Club, Organisation, Country
+from .models import Cave, CaveSystem, Region, Club, Organisation
 
 admin.site.register(Cave)
 admin.site.register(CaveSystem)
-admin.site.register(Country)
 
 
 @admin.register(Organisation)
 class OrganisationAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "abbreviation",
         "region",
         "country",
         "website",
@@ -26,8 +26,10 @@ class OrganisationAdmin(admin.ModelAdmin):
 class ClubAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "abbreviation",
         "location",
         "region",
+        "country",
     )
     list_filter = (
         "country",
