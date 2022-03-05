@@ -3,8 +3,39 @@ from django.contrib import admin
 
 from .models import Cave, CaveSystem, Region, Club, Organisation
 
-admin.site.register(Cave)
-admin.site.register(CaveSystem)
+
+@admin.register(Cave)
+class CaveAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "length",
+        "depth",
+        "location",
+        "region",
+        "organisation",
+        "country",
+    )
+    list_filter = (
+        "region",
+        "organisation",
+    )
+
+
+@admin.register(CaveSystem)
+class CaveSystemAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "length",
+        "depth",
+        "location",
+        "region",
+        "organisation",
+        "country",
+    )
+    list_filter = (
+        "region",
+        "organisation",
+    )
 
 
 @admin.register(Organisation)

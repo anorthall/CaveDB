@@ -80,7 +80,13 @@ class CaveSystem(models.Model):
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, blank=True, null=True
     )
-    length = models.IntegerField(verbose_name="length in metres", blank=True, null=True)
+    length = models.DecimalField(
+        verbose_name="length in kilometres",
+        blank=True,
+        null=True,
+        decimal_places=2,
+        max_digits=8,
+    )
     depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
     organisation = models.ForeignKey(
@@ -94,6 +100,9 @@ class CaveSystem(models.Model):
 
     def __str__(self):
         return self.name
+
+    def country(self):
+        return self.region.country
 
 
 class Cave(models.Model):
@@ -117,7 +126,13 @@ class Cave(models.Model):
     longitude = models.DecimalField(
         max_digits=9, decimal_places=6, blank=True, null=True
     )
-    length = models.IntegerField(verbose_name="length in metres", blank=True, null=True)
+    length = models.DecimalField(
+        verbose_name="length in kilometres",
+        blank=True,
+        null=True,
+        decimal_places=2,
+        max_digits=8,
+    )
     depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
     organisation = models.ForeignKey(
@@ -131,3 +146,6 @@ class Cave(models.Model):
 
     def __str__(self):
         return self.name
+
+    def country(self):
+        return self.region.country
