@@ -139,7 +139,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Jazzmin
 JAZZMIN_SETTINGS = {
     "changeform_format": "single",
-    "order_with_respect_to": ["database", "auth"],
+    "order_with_respect_to": [
+        "database",
+        "database.cave",
+        "database.cavesystem",
+        "database.club",
+        "database.organisation",
+        "database.region",
+        "database.country",
+        "auth",
+        "auth.user",
+        "auth.group",
+    ],
     "icons": {
         "auth.group": "fas fa-user-friends",
         "auth.user": "fas fa-user",
@@ -152,7 +163,7 @@ JAZZMIN_SETTINGS = {
     },
     "copyright": "Andrew Northall",
     "custom_links": {
-        "database": [
+        "core": [
             {
                 "name": "GitHub",
                 "url": "https://github.com/anorthall/CaveDB",
