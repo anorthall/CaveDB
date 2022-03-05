@@ -142,6 +142,12 @@ JAZZMIN_SETTINGS = {
     "icons": {
         "auth.group": "fas fa-user-friends",
         "auth.user": "fas fa-user",
+        "database.cave": "fas fa-crosshairs",
+        "database.organisation": "fas fa-handshake",
+        "database.club": "fas fa-couch",
+        "database.country": "fas fa-globe",
+        "database.region": "fas fa-map",
+        "database.cavesystem": "fas fa-route",
     },
     "copyright": "Andrew Northall",
     "custom_links": {

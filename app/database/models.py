@@ -12,9 +12,8 @@ class Country(models.Model):
         return self.name
 
 
-class District(models.Model):
+class Region(models.Model):
     name = models.CharField(max_length=30)
-    code = models.CharField(max_length=3, verbose_name="district code")
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
@@ -27,17 +26,14 @@ class District(models.Model):
         return "{} ({})".format(self.name, self.country)
 
 
-class CavingBody(models.Model):
-    class Meta:
-        verbose_name_plural = "caving bodies"
-
+class Organisation(models.Model):
     name = models.CharField(max_length=50, unique=True)
     country = models.ForeignKey(
         "Country",
         on_delete=models.PROTECT,
     )
-    district = models.ForeignKey(
-        "District",
+    region = models.ForeignKey(
+        "Region",
         on_delete=models.PROTECT,
         null=True,
         blank=True,
@@ -54,8 +50,8 @@ class Club(models.Model):
         "Country",
         on_delete=models.PROTECT,
     )
-    district = models.ForeignKey(
-        "District",
+    region = models.ForeignKey(
+        "Region",
         on_delete=models.PROTECT,
         null=True,
         blank=True,
@@ -68,13 +64,12 @@ class Club(models.Model):
         return self.name
 
 
-class System(models.Model):
+class CaveSystem(models.Model):
     name = models.CharField(max_length=50)
-    code = models.IntegerField(unique=True, verbose_name="system code")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    district = models.ForeignKey(
-        "District",
+    region = models.ForeignKey(
+        "Region",
         on_delete=models.PROTECT,
     )
     location = models.CharField(max_length=50)
@@ -87,8 +82,8 @@ class System(models.Model):
     length = models.IntegerField(verbose_name="length in metres", blank=True, null=True)
     depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
-    caving_body = models.ForeignKey(
-        "CavingBody",
+    organisation = models.ForeignKey(
+        "Organisation",
         on_delete=models.PROTECT,
         null=True,
         blank=True,
@@ -105,12 +100,12 @@ class Cave(models.Model):
     code = models.IntegerField(unique=True, verbose_name="cave code")
     added_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    district = models.ForeignKey(
-        "District",
+    region = models.ForeignKey(
+        "Region",
         on_delete=models.PROTECT,
     )
     system = models.ForeignKey(
-        "System",
+        "CaveSystem",
         on_delete=models.PROTECT,
         null=True,
         blank=True,
@@ -125,8 +120,8 @@ class Cave(models.Model):
     length = models.IntegerField(verbose_name="length in metres", blank=True, null=True)
     depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
     wikipedia = models.URLField(blank=True, null=True)
-    caving_body = models.ForeignKey(
-        "CavingBody",
+    organisation = models.ForeignKey(
+        "Organisation",
         on_delete=models.PROTECT,
         null=True,
         blank=True,

@@ -1,10 +1,10 @@
 from csv import list_dialects
 from django.contrib import admin
 
-from .models import Cave, System, District, Club, CavingBody, Country
+from .models import Cave, CaveSystem, Region, Club, Organisation, Country
 
 admin.site.register(Cave)
-admin.site.register(System)
+admin.site.register(CaveSystem)
 
 
 @admin.register(Country)
@@ -15,17 +15,17 @@ class CountryAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(CavingBody)
-class CavingBodyAdmin(admin.ModelAdmin):
+@admin.register(Organisation)
+class OrganisationAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "district",
+        "region",
         "country",
         "website",
     )
     list_filter = (
         "country",
-        "district",
+        "region",
     )
 
 
@@ -34,19 +34,18 @@ class ClubAdmin(admin.ModelAdmin):
     list_display = (
         "name",
         "location",
-        "district",
+        "region",
     )
     list_filter = (
         "country",
-        "district",
+        "region",
     )
 
 
-@admin.register(District)
-class DistrictAdmin(admin.ModelAdmin):
+@admin.register(Region)
+class RegionAdmin(admin.ModelAdmin):
     list_display = (
         "name",
-        "code",
         "country",
         "website",
     )
