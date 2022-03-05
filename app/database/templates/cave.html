@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load markdown_extras %}
+{% load gmaps_extras %}
 {% block title %}{{ cave.name }} ({{ cave.location }}) - {{ cave.region }}{% endblock %}
 {% block description %}Details on the length and depth of {{ cave.name }} beneath {{ cave.location }} in {{ cave.region }}.{% endblock %}
 {% block content %}
@@ -56,7 +57,10 @@
     <tr>
       <th scope="row">Entrance coordinates</th>
       {% if cave.latitude and cave.longitude %}
-      <td>{{ cave.latitude }}, {{ cave.longitude }}</td>
+      <td>
+        {{ cave.latitude }}, {{ cave.longitude }}
+        <a class="text-muted" href="{{ cave|gmaps }}">(Google Maps)</a>
+      </td>
       {% else %}
       <td>Not recorded</td>
       {% endif %}

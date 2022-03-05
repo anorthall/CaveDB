@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load markdown_extras %}
+{% load gmaps_extras %}
 {% block title %}{{ system.name }} ({{ system.location }}) - {{ system.region }}{% endblock %}
 {% block description %}Details on the length and depth of {{ system.name }} beneath {{ system.location }} in {{ system.region }}.{% endblock %}
 {% block content %}
@@ -56,7 +57,10 @@
     <tr>
       <th scope="row">System coordinates</th>
       {% if system.latitude and system.longitude %}
-      <td>{{ system.latitude }}, {{ system.longitude }}</td>
+      <td>
+        {{ system.latitude }}, {{ system.longitude }}
+        <a class="text-muted" href="{{ system|gmaps }}">(Google Maps)</a>
+      </td>
       {% else %}
       <td>Not recorded</td>
       {% endif %}
