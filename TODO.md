@@ -21,7 +21,7 @@ A rough list of tasks to complete for the project.
 - [ ] Implement trip logging
 - [ ] Add a section for surveys on Caves and Systems
 - [ ] Add photos to Cave/System pages
-- [ ] Add Google Maps links to Lat/long
+- [X] Add Google Maps links to Lat/long
 
 ## Models
 - [X] Create model for a Cave
