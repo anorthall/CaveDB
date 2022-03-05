@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}CaveDB - the cave database{% endblock %}
+{% block description %}A database of caves in England.{% endblock %}
+{% block content %}
+
+<div class="row">
+
+  <div class="col-8">
+
+    <h1 class="mb-0 display-4"><span class="text-muted">Welcome to</span> CaveDB</h1>
+
+    <p class="lead">CaveDB is a project to create an accurate database of caves within the United Kingdom, and further afield. This
+      is a community effort and your support is required to ensure that the information provided is accurate and covers a range of
+      regions.
+    </p>
+
+    <p>Please have a look at existing data by using the links in the menu bar above, or you can <a href="#">learn how to contribute</a>.</p>
+  </div>
+
+  <div class="col">
+
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">Recent Updates</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for item in recent_updates %}
+        <tr>
+          <td>
+            {{ item.updated_on|timesince }} ago:
+            <a class="text-muted" href="{% url 'db-cave' item.slug %}">{{ item.name }}</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}
