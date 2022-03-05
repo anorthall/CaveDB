@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("", views.index, name="db-index"),
+    path("db/", views.index, name="db-index"),
     path("cave/<slug:slug>", views.cave, name="db-cave"),
     path("caves/", views.caveindex, name="db-cave-index"),
     path("system/<slug:slug>", views.system, name="db-system"),
