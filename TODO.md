@@ -16,6 +16,7 @@ A rough list of tasks to complete for the project.
 - [ ] Create a sortable list view that shows Caves and Systems within Regions
 - [ ] Create a list view for Clubs
 - [ ] Create a homepage with an introduction and recent updates
+- [ ] Add validation of region/country
 - [ ] Create a method to report errors, or suggest corrections/new caves
 - [ ] Add notes on data sourcing and use
 - [ ] Implement trip logging
