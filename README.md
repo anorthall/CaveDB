@@ -16,3 +16,4 @@ into the database at the build stage and files are hot-reloaded based on modific
 5) The server will now be running on http://127.0.0.1:8000
 6) If you wish to repopulate the test data, run `docker-compose down -v` to delete the database volume,
 then relaunch the container
+7) The administrator login is `Administrator` / `cavedb`
