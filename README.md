@@ -11,8 +11,8 @@ into the database at the build stage and files are hot-reloaded based on modific
 ### Set up instructions
 1) Clone the repository: `git clone git@github.com:anorthall/CaveDB.git`
 2) Enter the repository directory: `cd CaveDB`
-3) Build the docker container: `docker-compose build`.
-4) Run the docker container: `docker-compose up`.
-5) The server will now be running on http://127.0.0.1:8000.
+3) Build the docker container: `docker-compose build`
+4) Run the docker container: `docker-compose up`
+5) The server will now be running on http://127.0.0.1:8000
 6) If you wish to repopulate the test data, run `docker-compose down -v` to delete the database volume,
-then relaunch the container.
+then relaunch the container
