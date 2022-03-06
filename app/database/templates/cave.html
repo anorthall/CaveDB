@@ -6,7 +6,15 @@
 {% block content %}
 
 <h1 class="mb-0 display-4"><span class="text-muted">Cave:</span> {{ cave.name }}</h1>
-<span class="fw-light mt-0 text-muted">{{ cave.country }} &rarr; {{ cave.region.name }} &rarr; {{ cave.location }}</span>
+<span class="fw-light mt-0 text-muted">
+  <a href="{% url 'db-index' %}" class="text-muted">{{ cave.country }}</a>
+  &rarr; <a href="{% url 'db-region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a>
+  &rarr; <span style="text-decoration: underline;">{{ cave.location }}</span>
+  {% if cave.system %}
+  &rarr; <a href="{% url 'db-system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a>
+  {% endif %}
+  &rarr; <a href="{% url 'db-cave' cave.slug %}" class="text-muted">{{ cave.name }}</a>
+</span>
 <br /><br />
 
 {% if cave.description %}

@@ -6,7 +6,12 @@
 {% block content %}
 
 <h1 class="mb-0 display-4"><span class="text-muted">System:</span> {{ system.name }}</h1>
-<span class="fw-light mt-0 text-muted">{{ system.country }} &rarr; {{ system.region.name }} &rarr; {{ system.location }}</span>
+<span class="fw-light mt-0 text-muted">
+  <a href="{% url 'db-index' %}" class="text-muted">{{ system.country }}</a>
+  &rarr; <a href="{% url 'db-region' system.region.slug %}" class="text-muted">{{ system.region.name }}</a>
+  &rarr; <span style="text-decoration: underline;">{{ system.location }}</span>
+  &rarr; <a href="{% url 'db-system' system.slug %}" class="text-muted">{{ system.name }}</a>
+</span>
 <br /><br />
 
 {% if system.description %}

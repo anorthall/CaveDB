@@ -1,13 +1,15 @@
 from django.shortcuts import get_object_or_404, render
-from .models import Cave, CaveSystem
+from .models import Cave, CaveSystem, Region
 
 
 def index(request):
-    return render(request, "base.html")
+    context = {"regions": Region.objects.all()}
+    return render(request, "dbindex.html", context)
 
 
-def caveindex(request):
-    return render(request, "base.html")
+def region(request, slug):
+    context = {"region": get_object_or_404(Region, slug=slug)}
+    return render(request, "region.html", context)
 
 
 def cave(request, slug):
@@ -15,14 +17,6 @@ def cave(request, slug):
     return render(request, "cave.html", context)
 
 
-def systemindex(request):
-    return render(request, "base.html")
-
-
 def system(request, slug):
     context = {"system": get_object_or_404(CaveSystem, slug=slug)}
     return render(request, "system.html", context)
-
-
-def club(request):
-    return render(request, "base.html")
