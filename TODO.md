@@ -12,13 +12,15 @@ A rough list of tasks to complete for the project.
 - [ ] Set up test workflows on GitHub
 
 ## Feature implementations
-- [ ] Create a list of Countries and their Regions
-- [ ] Create a sortable list view that shows Caves and Systems within Regions
+- [X] Create a list of Countries and their Regions
+- [X] Create a list view that shows Caves and Systems within Regions
 - [ ] Create a list view for Clubs
-- [ ] Create a homepage with an introduction and recent updates
+- [ ] Make list views sortable
+- [X] Create a homepage with an introduction and recent updates
+- [ ] Combine cave/system template into one template to reduce duplication
 - [ ] Add validation of region/country
 - [ ] Create a method to report errors, or suggest corrections/new caves
-- [ ] Add notes on data sourcing and use
+- [ ] Add an about page with notes on data sourcing and use
 - [ ] Implement trip logging
 - [ ] Add a section for surveys on Caves and Systems
 - [ ] Add photos to Cave/System pages
