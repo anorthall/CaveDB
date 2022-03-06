@@ -59,7 +59,7 @@
 
     {% for update in recent %}
     <tr>
-      <th scope="row">{{ forloop.counter }}</td>
+      <th scope="row">{{ forloop.counter }}</th>
       <td><a href="{{ update.url }}" class="text-muted">{{ update.name }}</a></td>
       <td>{{ update.country.name }}</td>
       <td>{{ update.region.name }}</td>
