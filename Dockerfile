@@ -4,7 +4,7 @@ FROM python:3.9-buster
 
 # Install nginx and vim, and copy nginx configuration
 RUN apt-get update && apt-get install nginx \
-    libpq-dev python3-dev \
+    libpq-dev python3-dev netcat \
     -y --no-install-recommends
 COPY docker/nginx.default /etc/nginx/sites-available/default
 

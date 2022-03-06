@@ -6,7 +6,7 @@ echo "Starting server. Access at http://127.0.0.1:8000/"
 echo ""
 cd cavedb
 
-if [ "$DATABASE" = "postgres" ]
+if [ "$WAIT_FOR_DB" = "yes" ]
 then
     echo "Waiting for postgres..."
 
