@@ -71,21 +71,13 @@
     </tr>
 
     <tr>
-      <th scope="row">Length</th>
-      {% if cave.length %}
-      <td>{{ cave.length }}km</td>
-      {% else %}
-      <td>Not recorded</td>
-      {% endif %}
+      <th scope="row">Length (km)</th>
+      <td>{{ cave.length|default:"Not recorded" }}</td>
     </tr>
 
     <tr>
-      <th scope="row">Depth</th>
-      {% if cave.depth %}
-      <td>{{ cave.depth }}m</td>
-      {% else %}
-      <td>Not recorded</td>
-      {% endif %}
+      <th scope="row">Depth (m)</th>
+      <td>{{ cave.depth|default:"Not recorded" }}</td>
     </tr>
 
     <tr>
@@ -94,16 +86,12 @@
 
     <tr>
       <th scope="row">Organisation</th>
-      {% if cave.organisation %}
       <td>
-        {{ cave.organisation }}
+        {{ cave.organisation|default:"Not recorded" }}
         {% if cave.organisation.website %}
         <a class="text-muted" href="{{ cave.organisation.website }}">(web)</a>
         {% endif %}
       </td>
-      {% else %}
-      <td>Not recorded</td>
-      {% endif %}
     </tr>
 
     <tr>
