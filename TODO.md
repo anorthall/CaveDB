@@ -6,7 +6,7 @@ A rough list of tasks to complete for the project.
 - [X] Initial cleanup of Django files using the above
 - [X] Set up Docker development environment
 - [X] Create Docker development environment that responds actively to code changes
-- [ ] Export test database and allow easy reload of test data
+- [X] Export test database and allow easy reload of test data
 - [ ] Create Docker production environment
 - [ ] Create basic unit tests
 - [ ] Set up test workflows on GitHub
