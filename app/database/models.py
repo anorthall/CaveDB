@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Country(models.Model):
@@ -69,7 +70,7 @@ class Club(models.Model):
         return self.name
 
 
-class CaveSystem(models.Model):
+class GenericCave(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
     added_on = models.DateTimeField(auto_now_add=True)
@@ -109,52 +110,25 @@ class CaveSystem(models.Model):
     def country(self):
         return self.region.country
 
+    class Meta:
+        abstract = True
+
+
+class CaveSystem(GenericCave):
     def number_of_caves(self):
         return len(self.cave_set.all())
 
+    def url(self):
+        return reverse("db-system", kwargs={"slug": self.slug})
 
-class Cave(models.Model):
-    name = models.CharField(max_length=50)
-    slug = models.SlugField(unique=True)
-    added_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    region = models.ForeignKey(
-        "Region",
-        on_delete=models.PROTECT,
-    )
+
+class Cave(GenericCave):
     system = models.ForeignKey(
         "CaveSystem",
         on_delete=models.PROTECT,
         null=True,
         blank=True,
     )
-    location = models.CharField(max_length=50)
-    latitude = models.DecimalField(
-        max_digits=9, decimal_places=6, blank=True, null=True
-    )
-    longitude = models.DecimalField(
-        max_digits=9, decimal_places=6, blank=True, null=True
-    )
-    length = models.DecimalField(
-        verbose_name="length in kilometres",
-        blank=True,
-        null=True,
-        decimal_places=3,
-        max_digits=6,
-    )
-    depth = models.IntegerField(verbose_name="depth in metres", blank=True, null=True)
-    wikipedia = models.URLField(blank=True, null=True)
-    organisation = models.ForeignKey(
-        "Organisation",
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True,
-    )
-    website = models.URLField(blank=True, null=True)
-    description = models.TextField(blank=True)
 
-    def __str__(self):
-        return self.name
-
-    def country(self):
-        return self.region.country
+    def url(self):
+        return reverse("db-cave", kwargs={"slug": self.slug})

@@ -1,9 +1,16 @@
 from django.shortcuts import get_object_or_404, render
-from .models import Cave, CaveSystem, Region
+from queryset_sequence import QuerySetSequence
+from .models import Region, Cave, CaveSystem
 
 
 def index(request):
-    context = {"regions": Region.objects.all()}
+    query = QuerySetSequence(Cave.objects.all(), CaveSystem.objects.all())
+    recent_updates = query.order_by("updated_on")[:10]
+
+    context = {
+        "recent": recent_updates,
+        "regions": Region.objects.all(),
+    }
     return render(request, "dbindex.html", context)
 
 
