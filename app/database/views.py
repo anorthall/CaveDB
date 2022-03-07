@@ -20,10 +20,16 @@ def region(request, slug):
 
 
 def cave(request, slug):
-    context = {"cave": get_object_or_404(Cave, slug=slug)}
+    context = {
+        "cave": get_object_or_404(Cave, slug=slug),
+        "type": "cave",
+        }
     return render(request, "cave.html", context)
 
 
 def system(request, slug):
-    context = {"system": get_object_or_404(CaveSystem, slug=slug)}
-    return render(request, "system.html", context)
+    context = {
+        "cave": get_object_or_404(CaveSystem, slug=slug),
+        "type": "system",
+        }
+    return render(request, "cave.html", context)

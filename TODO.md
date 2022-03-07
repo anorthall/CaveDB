@@ -17,7 +17,7 @@ A rough list of tasks to complete for the project.
 - [ ] Create a list view for Clubs
 - [ ] Make list views sortable
 - [X] Create a homepage with an introduction and recent updates
-- [ ] Combine cave/system template into one template to reduce duplication
+- [X] Combine cave/system template into one template to reduce duplication
 - [ ] Add validation of region/country
 - [ ] Create a method to report errors, or suggest corrections/new caves
 - [ ] Add an about page with notes on data sourcing and use
