@@ -152,6 +152,15 @@
     </tr>
 
     <tr>
+      <th scope="row">References</th>
+      {% if cave.references %}
+      <td>{{ cave.references | markdown | safe }}</td>
+      {% else %}
+      <td>None recorded</td>
+      {% endif %}
+    </tr>
+
+    <tr>
       <th scope="row">Added to database</th>
       <td>{{ cave.added_on | date:"l, jS F Y, H:i e" }}</td>
     </tr>
@@ -180,7 +189,7 @@
     {% endif %}
     <!-- Caves in system end -->
     {% endif %}
-    
+
   </tbody>
 </table>
 

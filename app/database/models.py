@@ -103,6 +103,7 @@ class GenericCave(models.Model):
     )
     website = models.URLField(blank=True, null=True)
     description = models.TextField(blank=True)
+    references = models.TextField(blank=True)
 
     def __str__(self):
         return self.name
