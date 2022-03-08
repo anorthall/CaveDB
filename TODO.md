@@ -15,7 +15,7 @@ A rough list of tasks to complete for the project.
 - [X] Create a list of Countries and their Regions
 - [X] Create a list view that shows Caves and Systems within Regions
 - [ ] Create a list view for Clubs
-- [ ] Make list views sortable
+- [X] Make list views sortable
 - [X] Create a homepage with an introduction and recent updates
 - [X] Combine cave/system template into one template to reduce duplication
 - [ ] Add validation of region/country

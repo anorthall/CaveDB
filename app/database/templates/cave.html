@@ -35,8 +35,8 @@
 <!-- Datasheet start -->
 <table class="table table-bordered">
   <thead>
-    <tr>
-      <th colspan="2" scope="col" class="text-center table-title">{{ cave.name }} - Datasheet</th>
+    <tr class="table-title text-center">
+      <th colspan="2" scope="col">{{ cave.name }} - Datasheet</th>
     </tr>
   </thead>
 
@@ -70,8 +70,8 @@
 
     {% endif %}
 
-    <tr>
-      <th scope="row" colspan="2" class="text-center table-title">Location</th>
+    <tr class="table-title text-center">
+      <th scope="row" colspan="2">Location</th>
     </tr>
 
     <tr>
@@ -101,8 +101,8 @@
       {% endif %}
     </tr>
 
-    <tr>
-      <th scope="row" colspan="2" class="text-center table-title">Length and Depth</th>
+    <tr class="text-center table-title">
+      <th scope="row" colspan="2">Length and Depth</th>
     </tr>
 
     <tr>
@@ -115,8 +115,8 @@
       <td>{{ cave.depth|default:"Not recorded" }}</td>
     </tr>
 
-    <tr>
-      <th scope="row" colspan="2" class="text-center table-title">External Resources</th>
+    <tr class="table-title text-center">
+      <th scope="row" colspan="2">External Resources</th>
     </tr>
 
     <tr>
@@ -147,8 +147,8 @@
       {% endif %}
     </tr>
 
-    <tr>
-      <th scope="row" colspan="2" class="text-center table-title">Database</th>
+    <tr class="text-center table-title">
+      <th scope="row" colspan="2">Database</th>
     </tr>
 
     <tr>
@@ -173,8 +173,8 @@
     {% if type == "system" %}
     <!-- Caves in system start -->
     {% if cave.number_of_caves > 0 %}
-    <tr>
-      <th scope="row" colspan="2" class="text-center table-title">Caves in System</th>
+    <tr class="text-center table-title">
+      <th scope="row" colspan="2">Caves in System</th>
     </tr>
 
     {% for subcave in cave.cave_set.all %}

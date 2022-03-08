@@ -1,17 +1,24 @@
 {% extends "base.html" %}
 {% load markdown_extras %}
 {% load gmaps_extras %}
+
 {% block title %}Caves in {{ region }}{% endblock %}
 {% block description %}A list of caves recorded in {{ region }}.{% endblock %}
-{% block content %}
 
+{% block content %}
+<!-- Header start -->
 <h1 class="mb-0 display-4"><span class="text-muted">Region:</span> {{ region.name }}</h1>
+
+<!-- Breadcrumbs start-->
 <span class="fw-light mt-0 text-muted">
   <a href="{% url 'db-index' %}" class="text-muted">{{ region.country }}</a>
   &rarr; <a href="{% url 'db-region' region.slug %}" class="text-muted">{{ region.name }}</a>
 </span>
 <br /><br />
+<!-- Breadcrumbs end -->
+<!-- Header end -->
 
+<!-- Description start-->
 {% if not region.cave_set.all and not region.cavesystem_set.all %}
 Sorry, this region currently has no caves or cave systems stored within the database.
 {% else %}
@@ -19,21 +26,24 @@ Sorry, this region currently has no caves or cave systems stored within the data
 {% if region.description %}
 {{ region.description | markdown | safe }}<br />
 {% endif %}
+<!-- Description end-->
 
-
+<!-- Datasheet start -->
+<!-- System list start -->
 {% if region.cavesystem_set.all %}
-<table class="table text-center">
+<table id="systemList" class="table text-center">
   <thead>
     <tr>
       <th scope="col" class="text-center" colspan="9">Cave Systems in {{ region.name }}</th>
     </tr>
-    <tr>
+
+    <tr data-sort-method="thead">
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Location</th>
-      <th scope="col">Caves</th>
-      <th scope="col">Length (km)</th>
-      <th scope="col">Depth (m)</th>
+      <th scope="col" data-sort-method="number">Caves</th>
+      <th scope="col" data-sort-method="number">Length (km)</th>
+      <th scope="col" data-sort-method="number">Depth (m)</th>
       <th scope="col">Organisation</th>
       <th scope="col">Website</th>
       <th scope="col">Wikipedia</th>
@@ -77,20 +87,23 @@ Sorry, this region currently has no caves or cave systems stored within the data
 </table>
 <br />
 {% endif %}
+<!-- System list end -->
 
+<!-- Cave list start -->
 {% if region.cave_set.all %}
-<table class="table text-center">
+<table id="caveList" class="table text-center">
   <thead>
     <tr>
       <th scope="col" class="text-center" colspan="9">Caves in {{ region.name }}</th>
     </tr>
-    <tr>
+
+    <tr data-sort-method="thead">
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Location</th>
       <th scope="col">System</th>
-      <th scope="col">Length (km)</th>
-      <th scope="col">Depth (m)</th>
+      <th scope="col" data-sort-method="number">Length (km)</th>
+      <th scope="col" data-sort-method="number">Depth (m)</th>
       <th scope="col">Organisation</th>
       <th scope="col">Website</th>
       <th scope="col">Wikipedia</th>
@@ -140,4 +153,15 @@ Sorry, this region currently has no caves or cave systems stored within the data
 </table>
 {% endif %}
 {% endif %}
+<!-- Cave list end -->
+<!-- Datasheet end -->
+
+{% endblock %}
+
+{% block footer_scripts %}
+<!-- Enable tablesort -->
+<script type="text/javascript">
+  new Tablesort(document.getElementById('caveList'));
+  new Tablesort(document.getElementById('systemList'));
+</script>
 {% endblock %}
