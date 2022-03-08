@@ -3,11 +3,6 @@ A rough list of tasks to complete for the project.
 
 ## Project initialisation
 ### Development
-- [X] Set up pre-commit hooks for Black and flake8
-- [X] Initial cleanup of Django files using the above
-- [X] Set up Docker development environment
-- [X] Create Docker development environment that responds actively to code changes
-- [X] Export test database and allow easy reload of test data
 - [ ] Create unit tests
 
 ### Production
