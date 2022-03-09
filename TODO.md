@@ -4,7 +4,6 @@ A rough list of tasks to complete for the project.
 ## Project initialisation
 ### Development
 - [ ] Update test data to include references
-- [ ] Create unit tests for views
 
 ### Production
 - [ ] Create Docker production environment
@@ -16,6 +15,7 @@ A rough list of tasks to complete for the project.
 
 ## Views implementations
 - [ ] Create a list view for Clubs
+- [ ] Create unit tests for search
 
 ### Models implementations
 - [X] Add validation of region/country - make sure you can't select conflicting options (e.g. England Region, Wales Country)

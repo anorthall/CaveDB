@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if terms %}
+Search for {{ terms }}
+{% else %}
+CaveDB: Search
+{% endif %}
+{% endblock %}
+
+{% block description %}
+{% if terms %}
+Search results for "{{ terms }}" on CaveDB.
+{% else %}
+Search for caves and cave systems on CaveDB.
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if error %}
+<!-- Error message -->
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+<!-- Header start -->
+<h1 class="mb-0 display-4"><span class="text-muted">Search{% if terms %}:{% endif %}</span>{% if terms %} {{ terms }}{% endif %}</h1>
+<span class="fw-light mt-0 text-muted">{{ number_of_results }} result{% if number_of_results != 1 %}s{% endif %} on CaveDB</span>
+<br /><br />
+<!-- Header end -->
+
+{% if results %}
+<!-- Results table start -->
+<table id="resultsList" class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col" class="text-center" colspan="10">Search results for "{{ terms }}"</th>
+    </tr>
+
+    <tr data-sort-method="thead">
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Location</th>
+      <th scope="col" data-sort-method="number">Length (km)</th>
+      <th scope="col" data-sort-method="number">Depth (m)</th>
+      <th scope="col">Organisation</th>
+      <th scope="col">Website</th>
+      <th scope="col">Wikipedia</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    {% for cave in results %}
+    <tr>
+
+      <th scope="row">{{ forloop.counter }}</th>
+      <td><a class="text-muted" href="{{ cave.url }}">{{ cave.name }}</a></td>
+      <td>{{ cave.type }}</td>
+      <td>{{ cave.location }}</td>
+      <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
+      <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
+
+      {% if cave.organisation.website %}
+      <td><a href="{{ cave.organisation.website }}" class="text-muted">{{ cave.organisation.abbreviation }}</a></td>
+      {% else %}
+      <td>{{ cave.organisation.abbreviation|default:"-" }}</td>
+      {% endif %}
+
+      {% if cave.website %}
+      <td><a href="{{ cave.website }}" class="text-muted">Website</a></td>
+      {% else %}
+      <td>-</td>
+      {% endif %}
+
+      {% if cave.wikipedia %}
+      <td><a href="{{ cave.wikipedia }}" class="text-muted">Wikipedia</a></td>
+      {% else %}
+      <td>-</td>
+      {% endif %}
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+<!-- Results table end -->
+{% else %}
+
+<p class="lead">I'm sorry, there were no results for the specified query.</p>
+
+{% endif %}
+{% endblock %}
+
+{% block footer_scripts %}
+{% if results %}
+<!-- Enable tablesort -->
+<script>
+  new Tablesort(document.getElementById('resultsList'));
+</script>
+{% endif %}
+{% endblock %}

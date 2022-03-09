@@ -30,6 +30,9 @@ class Region(models.Model):
 
 
 class GenericOrganisation(models.Model):
+    class Meta:
+        abstract = True
+
     name = models.CharField(max_length=50, unique=True)
     abbreviation = models.CharField(max_length=10)
     slug = models.SlugField(unique=True)
@@ -58,9 +61,6 @@ class GenericOrganisation(models.Model):
                     code="invalid",
                 )
 
-    class Meta:
-        abstract = True
-
 
 class Organisation(GenericOrganisation):
     pass
@@ -71,6 +71,9 @@ class Club(GenericOrganisation):
 
 
 class GenericCave(models.Model):
+    class Meta:
+        abstract = True
+
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique=True)
     added_on = models.DateTimeField(auto_now_add=True)
@@ -111,9 +114,6 @@ class GenericCave(models.Model):
     def country(self):
         return self.region.country
 
-    class Meta:
-        abstract = True
-
 
 class CaveSystem(GenericCave):
     def number_of_caves(self):
@@ -121,6 +121,9 @@ class CaveSystem(GenericCave):
 
     def url(self):
         return reverse("db-system", kwargs={"slug": self.slug})
+
+    def type(self):
+        return "System"
 
 
 class Cave(GenericCave):
@@ -133,3 +136,6 @@ class Cave(GenericCave):
 
     def url(self):
         return reverse("db-cave", kwargs={"slug": self.slug})
+
+    def type(self):
+        return "Cave"

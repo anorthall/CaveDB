@@ -7,4 +7,5 @@ urlpatterns = [
     path("region/<slug:slug>", views.region, name="db-region"),
     path("cave/<slug:slug>", views.cave, name="db-cave"),
     path("system/<slug:slug>", views.system, name="db-system"),
+    path("search/", views.search, name="db-search"),
 ]
