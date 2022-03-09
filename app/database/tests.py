@@ -1,17 +1,14 @@
 from django.test import TestCase
+from django.core.exceptions import ValidationError
 
 from decimal import Decimal
-from .models import Region, Country, Organisation, CaveSystem, Cave
+from .models import *
 from .templatetags.gmaps_extras import gmaps as gmaps_template_filter
 
 
 class RegionTestCase(TestCase):
     def setUp(self):
-        england = Country.objects.create(
-            name="England",
-            slug="england",
-        )
-
+        england = Country.objects.create(name="England", slug="england")
         Region.objects.create(
             name="Yorkshire Dales",
             slug="dales",
@@ -27,17 +24,12 @@ class RegionTestCase(TestCase):
 
 class CaveTestCase(TestCase):
     def setUp(self):
-        england = Country.objects.create(
-            name="England",
-            slug="england",
-        )
-
+        england = Country.objects.create(name="England", slug="england")
         dales = Region.objects.create(
             name="Yorkshire Dales",
             slug="dales",
             country=england,
         )
-
         cncc = Organisation.objects.create(
             name="Council of Northern Caving Clubs",
             abbreviation="CNCC",
@@ -46,7 +38,6 @@ class CaveTestCase(TestCase):
             region=dales,
             website="https://cncc.org.uk/",
         )
-
         three_counties = CaveSystem.objects.create(
             name="Three Counties",
             slug="three-counties",
@@ -60,7 +51,6 @@ class CaveTestCase(TestCase):
                 "The Three Counties System is a large system in" " the Yorkshire Dales."
             ),
         )
-
         Cave.objects.create(
             name="Lancaster Hole",
             slug="lancaster-hole",
@@ -112,4 +102,72 @@ class CaveTestCase(TestCase):
         )
         self.assertEqual(
             gmaps_template_filter(Cave.objects.get(name="Lancaster Hole")), correct_url
+        )
+
+
+class GenericOrganisationTestCase(TestCase):
+    def setUp(self):
+        spain = Country.objects.create(name="Spain", slug="spain")
+        england = Country.objects.create(name="England", slug="england")
+        england_region = Region.objects.create(
+            name="England Region",
+            slug="england-region",
+            country=england,
+            description="An English region.",
+        )
+        Region.objects.create(
+            name="Spain Region",
+            slug="spain-region",
+            country=spain,
+            description="A Spanish region.",
+        )
+        Club.objects.create(
+            name="England Club",
+            slug="england-club",
+            country=england,
+            region=england_region,
+            location="Somewhere in England.",
+        )
+        Organisation.objects.create(
+            name="England Organisation",
+            slug="england-org",
+            country=england,
+            region=england_region,
+        )
+
+    def test_region_and_country_validation(self):
+        """Test that GenericOrganisation.clean() validates Country/Region"""
+        spain = Country.objects.get(name="Spain")
+        spain_region = Region.objects.get(name="Spain Region")
+
+        # Try to assign Spain as a Country to an English Club
+        england_club = Club.objects.get(name="England Club")
+        england_club.country = spain
+        self.assertRaises(
+            ValidationError,
+            england_club.clean,
+        )
+
+        # Try to assign a Spanish region to an English Club
+        england_club = Club.objects.get(name="England Club")
+        england_club.region = spain_region
+        self.assertRaises(
+            ValidationError,
+            england_club.clean,
+        )
+
+        # Try to assign Spain as a Country to an English Organisation
+        england_org = Organisation.objects.get(name="England Organisation")
+        england_org.country = spain
+        self.assertRaises(
+            ValidationError,
+            england_org.clean,
+        )
+
+        # Try to assign a Spanish region to an English Organisation
+        england_org = Organisation.objects.get(name="England Organisation")
+        england_org.region = spain_region
+        self.assertRaises(
+            ValidationError,
+            england_org.clean,
         )
