@@ -145,7 +145,7 @@ class GenericOrganisationTestCase(TestCase):
         england_club.country = spain
         self.assertRaises(
             ValidationError,
-            england_club.clean,
+            england_club.full_clean,
         )
 
         # Try to assign a Spanish region to an English Club
@@ -153,7 +153,7 @@ class GenericOrganisationTestCase(TestCase):
         england_club.region = spain_region
         self.assertRaises(
             ValidationError,
-            england_club.clean,
+            england_club.full_clean,
         )
 
         # Try to assign Spain as a Country to an English Organisation
@@ -161,7 +161,7 @@ class GenericOrganisationTestCase(TestCase):
         england_org.country = spain
         self.assertRaises(
             ValidationError,
-            england_org.clean,
+            england_org.full_clean,
         )
 
         # Try to assign a Spanish region to an English Organisation
@@ -169,5 +169,5 @@ class GenericOrganisationTestCase(TestCase):
         england_org.region = spain_region
         self.assertRaises(
             ValidationError,
-            england_org.clean,
+            england_org.full_clean,
         )
