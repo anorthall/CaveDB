@@ -25,7 +25,7 @@ class Region(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return "{} ({})".format(self.name, self.country)
+        return f"{self.name} ({self.country})"
 
 
 class Organisation(models.Model):

@@ -6,7 +6,7 @@ register = template.Library()
 
 @register.filter()
 def gmaps(cave):
-    return "https://www.google.com/maps/search/?api=1&query={},{}".format(
-        cave.latitude,
-        cave.longitude,
+    return (
+        "https://www.google.com/maps/search/?api=1&query="
+        f"{cave.latitude},{cave.longitude}"
     )
