@@ -22,7 +22,7 @@ class RegionTestCase(TestCase):
         """Region.__str__() returns the correct format and information"""
         england = Country.objects.get(name="England")
         dales = Region.objects.get(slug="dales")
-        self.assertEqual(dales.__str__(), 'Yorkshire Dales (England)')
+        self.assertEqual(dales.__str__(), "Yorkshire Dales (England)")
 
 
 class CaveTestCase(TestCase):
@@ -57,8 +57,7 @@ class CaveTestCase(TestCase):
             wikipedia="https://en.wikipedia.org/wiki/Three_Counties_System",
             organisation=cncc,
             description=(
-                "The Three Counties System is a large system in"
-                " the Yorkshire Dales."
+                "The Three Counties System is a large system in" " the Yorkshire Dales."
             ),
         )
 
@@ -79,7 +78,7 @@ class CaveTestCase(TestCase):
             ),
             system=three_counties,
         )
-    
+
     def test_cavesystem_number_of_caves(self):
         """CaveSystem.number_of_caves() should count and update properly"""
         lancaster_hole = Cave.objects.get(name="Lancaster Hole")
@@ -112,6 +111,5 @@ class CaveTestCase(TestCase):
             "54.221430,-2.516353"  # Lancaster Hole lat/long
         )
         self.assertEqual(
-            gmaps_template_filter(Cave.objects.get(name="Lancaster Hole")),
-            correct_url
+            gmaps_template_filter(Cave.objects.get(name="Lancaster Hole")), correct_url
         )
