@@ -1,5 +1,6 @@
 asgiref==3.5.0
 cfgv==3.3.1
+coverage==6.3.2
 distlib==0.3.4
 Django==4.0.3
 django-grappelli==3.0.3
@@ -18,5 +19,5 @@ PyYAML==6.0
 six==1.16.0
 sqlparse==0.4.2
 toml==0.10.2
-virtualenv==20.13.2
+virtualenv==20.13.3
 zipp==3.7.0
