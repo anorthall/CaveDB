@@ -33,166 +33,167 @@
 <!-- Description end -->
 
 <!-- Datasheet start -->
-<table class="table table-bordered">
-  <thead>
-    <tr class="table-title text-center">
-      <th colspan="2" scope="col">{{ cave.name }} - Datasheet</th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-title text-center">
+        <th colspan="2" scope="col">{{ cave.name }} - Datasheet</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td>{{ cave.name }}</td>
-    </tr>
+    <tbody>
+      <tr>
+        <th scope="row">Name</th>
+        <td>{{ cave.name }}</td>
+      </tr>
 
-    {% if type == "cave" %}
+      {% if type == "cave" %}
 
-    <tr>
-      <th scope="row">Cave system</th>
-      {% if cave.system %}
-      <td><a class="text-muted" href="{% url 'db-system' cave.system.slug %}">{{ cave.system.name }}</a></td>
-      {% else %}
-      <td>Not recorded</td>
-      {% endif %}
-    </tr>
-
-    {% elif type == "system" %}
-
-    <tr>
-      <th scope="row">Caves in system</th>
-      {% if cave.number_of_caves > 0 %}
-      <td>{{ cave.number_of_caves }} recorded on CaveDB - see table below</td>
-      {% else %}
-      <td>None recorded on CaveDB</td>
-      {% endif %}
-    </tr>
-
-    {% endif %}
-
-    <tr class="table-title text-center">
-      <th scope="row" colspan="2">Location</th>
-    </tr>
-
-    <tr>
-      <th scope="row">Country</th>
-      <td>{{ cave.country }}</td>
-    </tr>
-
-    <tr>
-      <th scope="row">Region</th>
-      <td>{{ cave.region.name }}</td>
-    </tr>
-
-    <tr>
-      <th scope="row">Location</th>
-      <td>{{ cave.location }}</td>
-    </tr>
-
-    <tr>
-      <th scope="row">{{ type|capfirst }} coordinates</th>
-      {% if cave.latitude and cave.longitude %}
-      <td>
-        {{ cave.latitude }}, {{ cave.longitude }}
-        <a class="text-muted" href="{{ cave|gmaps }}">(Google Maps)</a>
-      </td>
-      {% else %}
-      <td>Not recorded</td>
-      {% endif %}
-    </tr>
-
-    <tr class="text-center table-title">
-      <th scope="row" colspan="2">Length and Depth</th>
-    </tr>
-
-    <tr>
-      <th scope="row">Length (km)</th>
-      <td>{{ cave.length|default:"Not recorded" }}</td>
-    </tr>
-
-    <tr>
-      <th scope="row">Depth (m)</th>
-      <td>{{ cave.depth|default:"Not recorded" }}</td>
-    </tr>
-
-    <tr class="table-title text-center">
-      <th scope="row" colspan="2">External Resources</th>
-    </tr>
-
-    <tr>
-      <th scope="row">Organisation</th>
-      <td>
-        {{ cave.organisation|default:"Not recorded" }}
-        {% if cave.organisation.website %}
-        <a class="text-muted" href="{{ cave.organisation.website }}">(web)</a>
+      <tr>
+        <th scope="row">Cave system</th>
+        {% if cave.system %}
+        <td><a class="text-muted" href="{% url 'db-system' cave.system.slug %}">{{ cave.system.name }}</a></td>
+        {% else %}
+        <td>Not recorded</td>
         {% endif %}
-      </td>
-    </tr>
+      </tr>
 
-    <tr>
-      <th scope="row">{{ type|capfirst }} website</th>
-      {% if cave.website %}
-      <td><a class="text-muted" href="{{ cave.website }}">{{ cave.website }}</a></td>
-      {% else %}
-      <td>Not recorded</td>
+      {% elif type == "system" %}
+
+      <tr>
+        <th scope="row">Caves in system</th>
+        {% if cave.number_of_caves > 0 %}
+        <td>{{ cave.number_of_caves }} recorded on CaveDB - see table below</td>
+        {% else %}
+        <td>None recorded on CaveDB</td>
+        {% endif %}
+      </tr>
+
       {% endif %}
-    </tr>
 
-    <tr>
-      <th scope="row">Wikipedia link</th>
-      {% if cave.wikipedia %}
-      <td><a class="text-muted" href="{{ cave.wikipedia }}">{{ cave.wikipedia }}</a></td>
-      {% else %}
-      <td>Not recorded</td>
+      <tr class="table-title text-center">
+        <th scope="row" colspan="2">Location</th>
+      </tr>
+
+      <tr>
+        <th scope="row">Country</th>
+        <td>{{ cave.country }}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Region</th>
+        <td>{{ cave.region.name }}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Location</th>
+        <td>{{ cave.location }}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">{{ type|capfirst }} coordinates</th>
+        {% if cave.latitude and cave.longitude %}
+        <td>
+          {{ cave.latitude }}, {{ cave.longitude }}
+          <a class="text-muted" href="{{ cave|gmaps }}">(Google Maps)</a>
+        </td>
+        {% else %}
+        <td>Not recorded</td>
+        {% endif %}
+      </tr>
+
+      <tr class="text-center table-title">
+        <th scope="row" colspan="2">Length and Depth</th>
+      </tr>
+
+      <tr>
+        <th scope="row">Length (km)</th>
+        <td>{{ cave.length|default:"Not recorded" }}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Depth (m)</th>
+        <td>{{ cave.depth|default:"Not recorded" }}</td>
+      </tr>
+
+      <tr class="table-title text-center">
+        <th scope="row" colspan="2">External Resources</th>
+      </tr>
+
+      <tr>
+        <th scope="row">Organisation</th>
+        <td>
+          {{ cave.organisation|default:"Not recorded" }}
+          {% if cave.organisation.website %}
+          <a class="text-muted" href="{{ cave.organisation.website }}">(web)</a>
+          {% endif %}
+        </td>
+      </tr>
+
+      <tr>
+        <th scope="row">{{ type|capfirst }} website</th>
+        {% if cave.website %}
+        <td><a class="text-muted" href="{{ cave.website }}">{{ cave.website }}</a></td>
+        {% else %}
+        <td>Not recorded</td>
+        {% endif %}
+      </tr>
+
+      <tr>
+        <th scope="row">Wikipedia link</th>
+        {% if cave.wikipedia %}
+        <td><a class="text-muted" href="{{ cave.wikipedia }}">{{ cave.wikipedia }}</a></td>
+        {% else %}
+        <td>Not recorded</td>
+        {% endif %}
+      </tr>
+
+      <tr class="text-center table-title">
+        <th scope="row" colspan="2">Database</th>
+      </tr>
+
+      <tr>
+        <th scope="row">References</th>
+        {% if cave.references %}
+        <td>{{ cave.references | markdown | safe }}</td>
+        {% else %}
+        <td>None recorded</td>
+        {% endif %}
+      </tr>
+
+      <tr>
+        <th scope="row">Added to database</th>
+        <td>{{ cave.added_on | date:"l, jS F Y, H:i e" }}</td>
+      </tr>
+
+      <tr>
+        <th scope="row">Last updated</th>
+        <td>{{ cave.updated_on | date:"l, jS F Y, H:i e" }}</td>
+      </tr>
+
+      {% if type == "system" %}
+      <!-- Caves in system start -->
+      {% if cave.number_of_caves > 0 %}
+      <tr class="text-center table-title">
+        <th scope="row" colspan="2">Caves in System</th>
+      </tr>
+
+      {% for subcave in cave.cave_set.all %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>
+          <a class="text-muted" href="{% url 'db-cave' subcave.slug %}">{{ subcave.name }}</a>
+          <span class="text-muted">({{ subcave.location }} / {{ subcave.region.name }})</span>
+        </td>
+      </tr>
+      {% endfor %}
       {% endif %}
-    </tr>
-
-    <tr class="text-center table-title">
-      <th scope="row" colspan="2">Database</th>
-    </tr>
-
-    <tr>
-      <th scope="row">References</th>
-      {% if cave.references %}
-      <td>{{ cave.references | markdown | safe }}</td>
-      {% else %}
-      <td>None recorded</td>
+      <!-- Caves in system end -->
       {% endif %}
-    </tr>
 
-    <tr>
-      <th scope="row">Added to database</th>
-      <td>{{ cave.added_on | date:"l, jS F Y, H:i e" }}</td>
-    </tr>
-
-    <tr>
-      <th scope="row">Last updated</th>
-      <td>{{ cave.updated_on | date:"l, jS F Y, H:i e" }}</td>
-    </tr>
-
-    {% if type == "system" %}
-    <!-- Caves in system start -->
-    {% if cave.number_of_caves > 0 %}
-    <tr class="text-center table-title">
-      <th scope="row" colspan="2">Caves in System</th>
-    </tr>
-
-    {% for subcave in cave.cave_set.all %}
-    <tr>
-      <td>{{ forloop.counter }}</td>
-      <td>
-        <a class="text-muted" href="{% url 'db-cave' subcave.slug %}">{{ subcave.name }}</a>
-        <span class="text-muted">({{ subcave.location }} / {{ subcave.region.name }})</span>
-      </td>
-    </tr>
-    {% endfor %}
-    {% endif %}
-    <!-- Caves in system end -->
-    {% endif %}
-
-  </tbody>
-</table>
-
+    </tbody>
+  </table>
+</div>
 <!-- Datasheet end -->
 
 {% endblock %}
