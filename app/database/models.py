@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.exceptions import ValidationError
 
 
 class Country(models.Model):
@@ -28,7 +29,7 @@ class Region(models.Model):
         return f"{self.name} ({self.country})"
 
 
-class Organisation(models.Model):
+class GenericOrganisation(models.Model):
     name = models.CharField(max_length=50, unique=True)
     abbreviation = models.CharField(max_length=10)
     slug = models.SlugField(unique=True)
@@ -43,31 +44,30 @@ class Organisation(models.Model):
         blank=True,
     )
     website = models.URLField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
 
+    def clean(self):
+        """Validate that the selected Region is part of the selected Country"""
+        if self.region:
+            if not self.region.country == self.country:
+                raise ValidationError(
+                    {"region": "The region must be part of the selected country."},
+                    code="invalid",
+                )
 
-class Club(models.Model):
-    name = models.CharField(max_length=50, unique=True)
-    abbreviation = models.CharField(max_length=10)
-    slug = models.SlugField(unique=True)
-    country = models.ForeignKey(
-        "Country",
-        on_delete=models.PROTECT,
-    )
-    region = models.ForeignKey(
-        "Region",
-        on_delete=models.PROTECT,
-        null=True,
-        blank=True,
-    )
+    class Meta:
+        abstract = True
+
+
+class Organisation(GenericOrganisation):
+    pass
+
+
+class Club(GenericOrganisation):
     location = models.CharField(max_length=50)
-    website = models.URLField(blank=True, null=True)
-    description = models.TextField()
-
-    def __str__(self):
-        return self.name
 
 
 class GenericCave(models.Model):

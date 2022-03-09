@@ -18,7 +18,7 @@ A rough list of tasks to complete for the project.
 - [ ] Create a list view for Clubs
 
 ### Models implementations
-- [ ] Add validation of region/country - make sure you can't select conflicting options (e.g. England Region, Wales Country)
+- [X] Add validation of region/country - make sure you can't select conflicting options (e.g. England Region, Wales Country)
 - [ ] Add a section for surveys on Caves/Systems pages
 - [ ] Add a section for photos to Cave/System pages
 
