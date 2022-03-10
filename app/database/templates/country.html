@@ -2,45 +2,32 @@
 {% load markdown_extras %}
 {% load gmaps_extras %}
 
-{% block title %}Caves in {{ region }}{% endblock %}
-{% block description %}A list of caves recorded in {{ region }}.{% endblock %}
+{% block title %}Caves in {{ country }}{% endblock %}
+{% block description %}A list of caves recorded in {{ country }}.{% endblock %}
 
 {% block content %}
 <!-- Header start -->
-<h1 class="mb-0 display-4"><span class="text-muted">Region:</span> {{ region.name }}</h1>
-<!-- Breadcrumbs start-->
-<span class="fw-light mt-0 text-muted">
-  <a href="{% url 'db:country' region.country.slug %}" class="text-muted">{{ region.country }}</a>
-  &rarr; <a href="{% url 'db:region' region.slug %}" class="text-muted">{{ region.name }}</a>
-</span>
-<br /><br />
-<!-- Breadcrumbs end -->
+<h1 class="mb-0 display-4"><span class="text-muted">Country:</span> {{ country }}</h1>
 <!-- Header end -->
 
-{% if not region.cave_set.all and not region.cavesystem_set.all %}
-<p class="lead">Sorry, this region currently has no caves or cave systems stored within the database.</p>
+{% if no_caves %}
+<p class="lead">Sorry, this country currently has no caves or cave systems stored within the database.</p>
 {% else %}
-
-<!-- Description start-->
-{% if region.description %}
-{{ region.description | markdown | safe }}<br />
-{% endif %}
-<!-- Description end-->
-
+<br />
 <!-- Datasheet start -->
-{% if region.cavesystem_set.all %}
+{% if systems %}
 <!-- System list start -->
 <div class="table-responsive">
   <table id="systemList" class="table text-center">
     <thead>
       <tr>
-        <th scope="col" class="text-center" colspan="9">Cave Systems in {{ region.name }}</th>
+        <th scope="col" class="text-center" colspan="9">Cave Systems in {{ country }}</th>
       </tr>
 
       <tr data-sort-method="thead">
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Location</th>
+        <th scope="col">Region</th>
         <th scope="col" data-sort-method="number">Caves</th>
         <th scope="col" data-sort-method="number">Length (km)</th>
         <th scope="col" data-sort-method="number">Depth (m)</th>
@@ -52,12 +39,12 @@
 
     <tbody>
 
-      {% for cave in region.cavesystem_set.all|dictsort:"location" %}
+      {% for cave in systems|dictsort:"region.name" %}
       <tr>
 
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{% url 'db:system' cave.slug %}">{{ cave.name }}</a></td>
-        <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
+        <td><a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a></td>
         <td>{{ cave.cave_set.all|length }}</td>
         <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
@@ -90,18 +77,18 @@
 {% endif %}
 
 <!-- Cave list start -->
-{% if region.cave_set.all %}
+{% if caves %}
 <div class="table-responsive">
   <table id="caveList" class="table text-center">
     <thead>
       <tr>
-        <th scope="col" class="text-center" colspan="9">Caves in {{ region.name }}</th>
+        <th scope="col" class="text-center" colspan="9">Caves in {{ country }}</th>
       </tr>
 
       <tr data-sort-method="thead">
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Location</th>
+        <th scope="col">Region</th>
         <th scope="col">System</th>
         <th scope="col" data-sort-method="number">Length (km)</th>
         <th scope="col" data-sort-method="number">Depth (m)</th>
@@ -113,12 +100,12 @@
 
     <tbody>
 
-      {% for cave in region.cave_set.all|dictsort:"location" %}
+      {% for cave in caves|dictsort:"region.name" %}
       <tr>
 
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{% url 'db:cave' cave.slug %}">{{ cave.name }}</a></td>
-        <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
+        <td><a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a></td>
 
         {% if cave.system %}
         <td><a href="{% url 'db:system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a></td>
@@ -161,11 +148,11 @@
 {% endblock %}
 
 {% block footer_scripts %}
-{% if region.cave_set.all or region.cavesystem_set.all %}
+{% if caves or systems %}
 <!-- Enable tablesort -->
 <script>
-  {% if region.cave_set.all %}new Tablesort(document.getElementById('caveList'));{% endif %}
-  {% if region.cavesystem_set.all %}new Tablesort(document.getElementById('systemList'));{% endif %}
+  {% if caves %}new Tablesort(document.getElementById('caveList'));{% endif %}
+  {% if systems %}new Tablesort(document.getElementById('systemList'));{% endif %}
 </script>
 {% endif %}
 {% endblock %}

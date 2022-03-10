@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import Http404
 from django.db.models import Q
 from queryset_sequence import QuerySetSequence
-from .models import Region, Cave, CaveSystem
+from .models import Region, Cave, CaveSystem, Country
 
 
 def index(request):
@@ -35,6 +35,20 @@ def system(request, slug):
         "type": "system",
     }
     return render(request, "cave.html", context)
+
+
+def country(request, slug):
+    country = get_object_or_404(Country, slug=slug)
+    context = {
+        "country": country,
+        "systems": country.cavesystems(),
+        "caves": country.caves(),
+    }
+
+    if len(context["caves"]) == 0 and len(context["systems"]) == 0:
+        context["no_caves"] = True
+
+    return render(request, "country.html", context)
 
 
 def search(request):

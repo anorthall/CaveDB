@@ -34,13 +34,14 @@ Search for caves and cave systems on CaveDB.
   <table id="resultsList" class="table text-center">
     <thead>
       <tr>
-        <th scope="col" class="text-center" colspan="9">Search results for &ldquo;{{ terms }}&rdquo;</th>
+        <th scope="col" class="text-center" colspan="10">Search results for &ldquo;{{ terms }}&rdquo;</th>
       </tr>
 
       <tr data-sort-method="thead">
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Type</th>
+        <th scope="col">Region</th>
         <th scope="col">Location</th>
         <th scope="col" data-sort-method="number">Length (km)</th>
         <th scope="col" data-sort-method="number">Depth (m)</th>
@@ -58,6 +59,10 @@ Search for caves and cave systems on CaveDB.
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{{ cave.url }}">{{ cave.name }}</a></td>
         <td>{{ cave.type }}</td>
+        <td class="text-muted">
+          <a href="{% url 'db:country' cave.country.slug %}" class="text-muted">{{ cave.country.name }}</a> /
+          <a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a>
+        </td>
         <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
         <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>

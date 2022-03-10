@@ -9,7 +9,7 @@
 
 <!-- Breadcrumbs start -->
 <span class="fw-light mt-0 text-muted">
-  <a href="{% url 'db:index' %}" class="text-muted">{{ cave.country }}</a>
+  <a href="{% url 'db:country' cave.country.slug %}" class="text-muted">{{ cave.country }}</a>
   &rarr; <a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a>
   &rarr; <a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a>
 
@@ -72,7 +72,7 @@
 
       <tr>
         <th scope="row">Country</th>
-        <td>{{ cave.country }}</td>
+        <td><a href="{% url 'db:country' cave.country.slug %}" class="text-muted">{{ cave.country }}</a></td>
       </tr>
 
       <tr>

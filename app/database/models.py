@@ -13,6 +13,22 @@ class Country(models.Model):
     def __str__(self):
         return self.name
 
+    def caves(self):
+        """Return all Cave objects linked to this Country via Regions"""
+        results = Cave.objects.none()
+        for region in self.region_set.all():
+            results = results.union(region.cave_set.all())
+
+        return results
+
+    def cavesystems(self):
+        """Return all CaveSystem objects linked to this Country via Regions"""
+        results = CaveSystem.objects.none()
+        for region in self.region_set.all():
+            results = results.union(region.cavesystem_set.all())
+
+        return results
+
 
 class Region(models.Model):
     name = models.CharField(max_length=30)
