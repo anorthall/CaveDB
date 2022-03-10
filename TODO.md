@@ -3,7 +3,7 @@ A rough list of tasks to complete for the project.
 
 ## Project initialisation
 ### Development
-- [ ] Update test data to include references
+- [ ] Update test data to include references and further resources
 
 ### Production
 - [ ] Create Docker production environment

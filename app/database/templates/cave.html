@@ -148,17 +148,18 @@
         {% endif %}
       </tr>
 
+      <tr>
+        <th scope="row">Further resources</th>
+        <td>{{ cave.resources | markdown | safe | default:"Not recorded"}}</td>
+      </tr>
+
       <tr class="text-center table-title">
         <th scope="row" colspan="2">Database</th>
       </tr>
 
       <tr>
         <th scope="row">References</th>
-        {% if cave.references %}
-        <td>{{ cave.references | markdown | safe }}</td>
-        {% else %}
-        <td>None recorded</td>
-        {% endif %}
+        <td>{{ cave.references | markdown | safe | default:"Not recorded"}}</td>
       </tr>
 
       <tr>
