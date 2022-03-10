@@ -1,7 +1,7 @@
 # CaveDB To-do List
 A rough list of tasks to complete for the project.
 
-## Project initialisation
+## Project Environment
 ### Development
 - [ ] Update test data to include references and further resources
 
@@ -17,11 +17,5 @@ A rough list of tasks to complete for the project.
 - [ ] Create a list view for Clubs
 - [ ] Create unit tests for search
 
-### Models implementations
-- [X] Add validation of region/country - make sure you can't select conflicting options (e.g. England Region, Wales Country)
-- [ ] Add a section for surveys on Caves/Systems pages
-- [ ] Add a section for photos to Cave/System pages
-
-## Design
-- [ ] Make the site mobile friendly, particularly tables
-- [ ] Implement a better menu/navigation system
+## Data administration
+- [ ] Add a style guide and inclusion criteria
