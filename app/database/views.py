@@ -65,9 +65,9 @@ def search(request):
     if len(results) == 1:
         result = results[0]
         if result.__class__ == CaveSystem:
-            return redirect("db-system", slug=result.slug)
+            return redirect("db:system", slug=result.slug)
         elif result.__class__ == Cave:
-            return redirect("db-cave", slug=result.slug)
+            return redirect("db:cave", slug=result.slug)
 
     context = {
         "terms": search_terms,

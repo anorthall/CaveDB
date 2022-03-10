@@ -9,17 +9,17 @@
 
 <!-- Breadcrumbs start -->
 <span class="fw-light mt-0 text-muted">
-  <a href="{% url 'db-index' %}" class="text-muted">{{ cave.country }}</a>
-  &rarr; <a href="{% url 'db-region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a>
+  <a href="{% url 'db:index' %}" class="text-muted">{{ cave.country }}</a>
+  &rarr; <a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a>
   &rarr; <span style="text-decoration: underline;">{{ cave.location }}</span>
 
   {% if type == "cave" %}
   {% if cave.system %}
-  &rarr; <a href="{% url 'db-system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a>
+  &rarr; <a href="{% url 'db:system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a>
   {% endif %}
-  &rarr; <a href="{% url 'db-cave' cave.slug %}" class="text-muted">{{ cave.name }}</a>
+  &rarr; <a href="{% url 'db:cave' cave.slug %}" class="text-muted">{{ cave.name }}</a>
   {% elif type == "system" %}
-  &rarr; <a href="{% url 'db-system' cave.slug %}" class="text-muted">{{ cave.name }}</a>
+  &rarr; <a href="{% url 'db:system' cave.slug %}" class="text-muted">{{ cave.name }}</a>
   {% endif %}
 </span>
 <!-- Breadcrumbs end -->
@@ -52,7 +52,7 @@
       <tr>
         <th scope="row">Cave system</th>
         {% if cave.system %}
-        <td><a class="text-muted" href="{% url 'db-system' cave.system.slug %}">{{ cave.system.name }}</a></td>
+        <td><a class="text-muted" href="{% url 'db:system' cave.system.slug %}">{{ cave.system.name }}</a></td>
         {% else %}
         <td>Not recorded</td>
         {% endif %}
@@ -182,7 +182,7 @@
       <tr>
         <td>{{ forloop.counter }}</td>
         <td>
-          <a class="text-muted" href="{% url 'db-cave' subcave.slug %}">{{ subcave.name }}</a>
+          <a class="text-muted" href="{% url 'db:cave' subcave.slug %}">{{ subcave.name }}</a>
           <span class="text-muted">({{ subcave.location }} / {{ subcave.region.name }})</span>
         </td>
       </tr>

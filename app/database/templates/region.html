@@ -11,8 +11,8 @@
 
 <!-- Breadcrumbs start-->
 <span class="fw-light mt-0 text-muted">
-  <a href="{% url 'db-index' %}" class="text-muted">{{ region.country }}</a>
-  &rarr; <a href="{% url 'db-region' region.slug %}" class="text-muted">{{ region.name }}</a>
+  <a href="{% url 'db:index' %}" class="text-muted">{{ region.country }}</a>
+  &rarr; <a href="{% url 'db:region' region.slug %}" class="text-muted">{{ region.name }}</a>
 </span>
 <br /><br />
 <!-- Breadcrumbs end -->
@@ -57,7 +57,7 @@ Sorry, this region currently has no caves or cave systems stored within the data
       <tr>
 
         <th scope="row">{{ forloop.counter }}</th>
-        <td><a class="text-muted" href="{% url 'db-system' cave.slug %}">{{ cave.name }}</a></td>
+        <td><a class="text-muted" href="{% url 'db:system' cave.slug %}">{{ cave.name }}</a></td>
         <td>{{ cave.location }}</td>
         <td>{{ cave.cave_set.all|length }}</td>
         <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
@@ -118,11 +118,11 @@ Sorry, this region currently has no caves or cave systems stored within the data
       <tr>
 
         <th scope="row">{{ forloop.counter }}</th>
-        <td><a class="text-muted" href="{% url 'db-cave' cave.slug %}">{{ cave.name }}</a></td>
+        <td><a class="text-muted" href="{% url 'db:cave' cave.slug %}">{{ cave.name }}</a></td>
         <td>{{ cave.location }}</td>
 
         {% if cave.system %}
-        <td><a href="{% url 'db-system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a></td>
+        <td><a href="{% url 'db:system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a></td>
         {% else %}
         <td>-</td>
         {% endif %}

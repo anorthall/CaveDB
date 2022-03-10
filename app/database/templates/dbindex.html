@@ -31,10 +31,10 @@
       <tr>
         <th scope="row">{{ forloop.counter }}</th>
         <td>{{ region.country.name }}</td>
-        <td><a href="{% url 'db-region' region.slug %}" class="text-muted">{{ region.name }}</a></td>
+        <td><a href="{% url 'db:region' region.slug %}" class="text-muted">{{ region.name }}</a></td>
         <td>{{ region.cave_set.all|length }}</td>
         <td>{{ region.cavesystem_set.all|length }}</td>
-        <td><a href="{% url 'db-region' region.slug %}" class="text-muted">View caves</a></td>
+        <td><a href="{% url 'db:region' region.slug %}" class="text-muted">View caves</a></td>
       </tr>
       {% endfor %}
     </tbody>

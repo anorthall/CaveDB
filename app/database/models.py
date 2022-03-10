@@ -120,7 +120,7 @@ class CaveSystem(GenericCave):
         return len(self.cave_set.all())
 
     def url(self):
-        return reverse("db-system", kwargs={"slug": self.slug})
+        return reverse("db:system", kwargs={"slug": self.slug})
 
     def type(self):
         return "System"
@@ -135,7 +135,7 @@ class Cave(GenericCave):
     )
 
     def url(self):
-        return reverse("db-cave", kwargs={"slug": self.slug})
+        return reverse("db:cave", kwargs={"slug": self.slug})
 
     def type(self):
         return "Cave"

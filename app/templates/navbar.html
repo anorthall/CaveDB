@@ -1,7 +1,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-3" aria-label="navbar">
     <div class="container">
-      <a class="navbar-brand" href="{% url 'db-index' %}">CaveDB</a>
+      <a class="navbar-brand" href="{% url 'db:index' %}">CaveDB</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,14 +10,14 @@
         <ul class="navbar-nav me-auto">
 
           {% comment %}
-          {% url 'db-index' as current_page %}
+          {% url 'db:index' as current_page %}
           <li class="nav-item">
-            <a class="nav-link{% if request.get_full_path == current_page %} active{% endif %}" aria-current="page" href="{% url 'db-index' %}">Region List</a>
+            <a class="nav-link{% if request.get_full_path == current_page %} active{% endif %}" aria-current="page" href="{% url 'db:index' %}">Region List</a>
           </li>
           {% endcomment %}
 
         </ul>
-        <form class="d-flex" name="search" method="GET" action="{% url 'db-search' %}">
+        <form class="d-flex" name="search" method="GET" action="{% url 'db:search' %}">
           <input class="form-control me-2" type="search" placeholder="Caves and Systems" name="terms" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
