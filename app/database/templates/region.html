@@ -64,19 +64,19 @@ Sorry, this region currently has no caves or cave systems stored within the data
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
 
         {% if cave.organisation.website %}
-        <td><a href="{{ cave.organisation.website }}" class="text-muted">{{ cave.organisation.abbreviation }}</a></td>
+        <td>{{ cave.organisation.abbreviation }} <a href="{{ cave.organisation.website }}" class="text-muted"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
         {% else %}
         <td>{{ cave.organisation.abbreviation|default:"-" }}</td>
         {% endif %}
 
         {% if cave.website %}
-        <td><a href="{{ cave.website }}" class="text-muted">Website</a></td>
+        <td><a href="{{ cave.website }}" class="text-muted"><i class="fa-solid fa-link"></i></a></td>
         {% else %}
         <td>-</td>
         {% endif %}
 
         {% if cave.wikipedia %}
-        <td><a href="{{ cave.wikipedia }}" class="text-muted">Wikipedia</a></td>
+        <td><a href="{{ cave.wikipedia }}" class="text-muted"><i class="fa-brands fa-wikipedia-w"></i></a></td>
         {% else %}
         <td>-</td>
         {% endif %}
@@ -131,19 +131,19 @@ Sorry, this region currently has no caves or cave systems stored within the data
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
 
         {% if cave.organisation.website %}
-        <td><a href="{{ cave.organisation.website }}" class="text-muted">{{ cave.organisation.abbreviation }}</a></td>
+        <td>{{ cave.organisation.abbreviation }} <a href="{{ cave.organisation.website }}" class="text-muted"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
         {% else %}
         <td>{{ cave.organisation.abbreviation|default:"-" }}</td>
         {% endif %}
 
         {% if cave.website %}
-        <td><a href="{{ cave.website }}" class="text-muted">Website</a></td>
+        <td><a href="{{ cave.website }}" class="text-muted"><i class="fa-solid fa-link"></i></a></td>
         {% else %}
         <td>-</td>
         {% endif %}
 
         {% if cave.wikipedia %}
-        <td><a href="{{ cave.wikipedia }}" class="text-muted">Wikipedia</a></td>
+        <td><a href="{{ cave.wikipedia }}" class="text-muted"><i class="fa-brands fa-wikipedia-w"></i></a></td>
         {% else %}
         <td>-</td>
         {% endif %}

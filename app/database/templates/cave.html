@@ -95,7 +95,7 @@
         {% if cave.latitude and cave.longitude %}
         <td>
           {{ cave.latitude }}, {{ cave.longitude }}
-          <a class="text-muted" href="{{ cave|gmaps }}">(Google Maps)</a>
+          <a class="text-muted" href="{{ cave|gmaps }}"><i class="fa-solid fa-map-location-dot"></i></a>
         </td>
         {% else %}
         <td>Not recorded</td>
@@ -125,7 +125,7 @@
         <td>
           {{ cave.organisation|default:"Not recorded" }}
           {% if cave.organisation.website %}
-          <a class="text-muted" href="{{ cave.organisation.website }}">(web)</a>
+          <a class="text-muted" href="{{ cave.organisation.website }}"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
           {% endif %}
         </td>
       </tr>

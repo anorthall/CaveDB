@@ -13,7 +13,7 @@
   <table id="regionList" class="table text-center">
     <thead>
       <tr>
-        <th scope="col" colspan="6">Caving Regions</th>
+        <th scope="col" colspan="5">Caving Regions</th>
       </tr>
 
       <tr data-sort-method="thead">
@@ -22,7 +22,6 @@
         <th scope="col">Region</th>
         <th scope="col" data-sort-method="number">Caves recorded</th>
         <th scope="col" data-sort-method="number">Systems recorded</th>
-        <th scope="col">Link</th>
       </tr>
     </thead>
 
@@ -34,7 +33,6 @@
         <td><a href="{% url 'db:region' region.slug %}" class="text-muted">{{ region.name }}</a></td>
         <td>{{ region.cave_set.all|length }}</td>
         <td>{{ region.cavesystem_set.all|length }}</td>
-        <td><a href="{% url 'db:region' region.slug %}" class="text-muted">View caves</a></td>
       </tr>
       {% endfor %}
     </tbody>
