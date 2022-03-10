@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import Http404
+from django.db.models import Q
 from queryset_sequence import QuerySetSequence
 from .models import Region, Cave, CaveSystem
 
@@ -57,9 +58,11 @@ def search(request):
         }
         return render(request, "search.html", context)
 
-    # Get the results
+    # Build the results
     query = QuerySetSequence(Cave.objects.all(), CaveSystem.objects.all())
-    results = query.filter(name__icontains=search_terms)
+    # Search name and location
+    st = search_terms
+    results = query.filter(Q(name__icontains=st) | Q(location__iexact=st))
 
     # If only one result, and it's a Cave or CaveSystem, just redirect to the page
     if len(results) == 1:
