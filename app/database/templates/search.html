@@ -58,7 +58,7 @@ Search for caves and cave systems on CaveDB.
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{{ cave.url }}">{{ cave.name }}</a></td>
         <td>{{ cave.type }}</td>
-        <td>{{ cave.location }}</td>
+        <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
         <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
 

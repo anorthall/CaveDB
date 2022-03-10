@@ -11,15 +11,10 @@
 <span class="fw-light mt-0 text-muted">
   <a href="{% url 'db:index' %}" class="text-muted">{{ cave.country }}</a>
   &rarr; <a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a>
-  &rarr; <span style="text-decoration: underline;">{{ cave.location }}</span>
+  &rarr; <a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a>
 
-  {% if type == "cave" %}
-  {% if cave.system %}
+  {% if type == "cave" and cave.system %}
   &rarr; <a href="{% url 'db:system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a>
-  {% endif %}
-  &rarr; <a href="{% url 'db:cave' cave.slug %}" class="text-muted">{{ cave.name }}</a>
-  {% elif type == "system" %}
-  &rarr; <a href="{% url 'db:system' cave.slug %}" class="text-muted">{{ cave.name }}</a>
   {% endif %}
 </span>
 <!-- Breadcrumbs end -->
@@ -82,12 +77,12 @@
 
       <tr>
         <th scope="row">Region</th>
-        <td>{{ cave.region.name }}</td>
+        <td><a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a></td>
       </tr>
 
       <tr>
         <th scope="row">Location</th>
-        <td>{{ cave.location }}</td>
+        <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
       </tr>
 
       <tr>

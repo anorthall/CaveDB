@@ -58,7 +58,7 @@ Sorry, this region currently has no caves or cave systems stored within the data
 
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{% url 'db:system' cave.slug %}">{{ cave.name }}</a></td>
-        <td>{{ cave.location }}</td>
+        <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
         <td>{{ cave.cave_set.all|length }}</td>
         <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
@@ -119,7 +119,7 @@ Sorry, this region currently has no caves or cave systems stored within the data
 
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{% url 'db:cave' cave.slug %}">{{ cave.name }}</a></td>
-        <td>{{ cave.location }}</td>
+        <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
 
         {% if cave.system %}
         <td><a href="{% url 'db:system' cave.system.slug %}" class="text-muted">{{ cave.system.name }}</a></td>
