@@ -66,7 +66,7 @@
       <tr>
         <th scope="row">{{ forloop.counter }}</th>
         <td><a href="{{ update.url }}" class="text-muted">{{ update.name }}</a></td>
-        <td><a href="{% url 'db:country' update.country.slug %}" class="text-muted">{{ update.country }}</a></td>
+        <td><a href="{% url 'db:country' update.region.country.slug %}" class="text-muted">{{ update.region.country }}</a></td>
         <td><a href="{% url 'db:region' update.region.slug %}" class="text-muted">{{ update.region.name }}</a></td>
         <td><a href="{% url 'db:search' %}?terms={{ update.location|urlencode }}" class="text-muted">{{ update.location }}</a></td>
         <td>{{ update.updated_on|timesince }} ago</td>

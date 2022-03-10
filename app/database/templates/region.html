@@ -17,7 +17,7 @@
 <!-- Breadcrumbs end -->
 <!-- Header end -->
 
-{% if not region.cave_set.all and not region.cavesystem_set.all %}
+{% if not caves and not systems %}
 <p class="lead">Sorry, this region currently has no caves or cave systems stored within the database.</p>
 {% else %}
 
@@ -28,7 +28,7 @@
 <!-- Description end-->
 
 <!-- Datasheet start -->
-{% if region.cavesystem_set.all %}
+{% if systems %}
 <!-- System list start -->
 <div class="table-responsive">
   <table id="systemList" class="table text-center">
@@ -52,13 +52,13 @@
 
     <tbody>
 
-      {% for cave in region.cavesystem_set.all|dictsort:"location" %}
+      {% for cave in systems|dictsort:"location" %}
       <tr>
 
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{% url 'db:system' cave.slug %}">{{ cave.name }}</a></td>
         <td><a href="{% url 'db:search' %}?terms={{ cave.location|urlencode }}" class="text-muted">{{ cave.location }}</a></td>
-        <td>{{ cave.cave_set.all|length }}</td>
+        <td>{{ cave.number_of_caves }}</td>
         <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
 
@@ -90,7 +90,7 @@
 {% endif %}
 
 <!-- Cave list start -->
-{% if region.cave_set.all %}
+{% if caves %}
 <div class="table-responsive">
   <table id="caveList" class="table text-center">
     <thead>
@@ -113,7 +113,7 @@
 
     <tbody>
 
-      {% for cave in region.cave_set.all|dictsort:"location" %}
+      {% for cave in caves|dictsort:"location" %}
       <tr>
 
         <th scope="row">{{ forloop.counter }}</th>
@@ -161,11 +161,11 @@
 {% endblock %}
 
 {% block footer_scripts %}
-{% if region.cave_set.all or region.cavesystem_set.all %}
+{% if caves or systems %}
 <!-- Enable tablesort -->
 <script>
-  {% if region.cave_set.all %}new Tablesort(document.getElementById('caveList'));{% endif %}
-  {% if region.cavesystem_set.all %}new Tablesort(document.getElementById('systemList'));{% endif %}
+  {% if caves %}new Tablesort(document.getElementById('caveList'));{% endif %}
+  {% if systems %}new Tablesort(document.getElementById('systemList'));{% endif %}
 </script>
 {% endif %}
 {% endblock %}

@@ -45,7 +45,7 @@
         <th scope="row">{{ forloop.counter }}</th>
         <td><a class="text-muted" href="{% url 'db:system' cave.slug %}">{{ cave.name }}</a></td>
         <td><a href="{% url 'db:region' cave.region.slug %}" class="text-muted">{{ cave.region.name }}</a></td>
-        <td>{{ cave.cave_set.all|length }}</td>
+        <td>{{ cave.number_of_caves }}</td>
         <td>{{ cave.length|floatformat:"-3"|default:"-" }}</td>
         <td>{{ cave.depth|floatformat:"-3"|default:"-" }}</td>
 

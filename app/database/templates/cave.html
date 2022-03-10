@@ -57,11 +57,13 @@
 
       <tr>
         <th scope="row">Caves in system</th>
-        {% if cave.number_of_caves > 0 %}
-        <td>{{ cave.number_of_caves }} recorded on CaveDB - see table below</td>
+        {% with cave_num=cave.number_of_caves %}
+        {% if cave_num > 0 %}
+        <td>{{ cave_num }} recorded on CaveDB - see table below</td>
         {% else %}
         <td>None recorded on CaveDB</td>
         {% endif %}
+        {% endwith %}
       </tr>
 
       {% endif %}
@@ -169,12 +171,12 @@
 
       {% if type == "system" %}
       <!-- Caves in system start -->
-      {% if cave.number_of_caves > 0 %}
+      {% if caves_in_system %}
       <tr class="text-center table-title">
         <th scope="row" colspan="2">Caves in System</th>
       </tr>
 
-      {% for subcave in cave.cave_set.all %}
+      {% for subcave in caves_in_system %}
       <tr>
         <td>{{ forloop.counter }}</td>
         <td>
